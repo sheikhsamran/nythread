@@ -135,6 +135,26 @@
         "content3": ""
       }
     },
+    "179148119154dad0c8": {
+      "type": "apps",
+      "blocks": {
+        "reviews_from_amazon_amazon_reviews_eP49GE": {
+          "type": "shopify://apps/reviews-from-amazon/blocks/Amazon reviews/d2a0c9ad-3f97-43c4-9e0c-bc1a4007a201",
+          "settings": {
+            "heading": "Amazon reviews"
+          }
+        }
+      },
+      "block_order": [
+        "reviews_from_amazon_amazon_reviews_eP49GE"
+      ],
+      "settings": {
+        "top_space_desktop": 30,
+        "bottom_space_desktop": 30,
+        "top_space_mobile": 30,
+        "bottom_space_mobile": 30
+      }
+    },
     "product_info_tabs_KqM6Pq": {
       "type": "product-info-tabs",
       "name": "Product Info Tabs",
@@ -271,7 +291,8 @@
     "main-product",
     "product_info_tabs_KqM6Pq",
     "collection_showcase_mGrfLA",
-    "video_collection_card_g7tRTA",
-    "product_recommendations"
+    "product_recommendations",
+    "179148119154dad0c8",
+    "video_collection_card_g7tRTA"
   ]
 }
