@@ -170,8 +170,15 @@ document.addEventListener('click', function(e) {
         if (wrap.getAttribute('data-active-tab') === target) {
             return;
         }
+        var previousTab = wrap.getAttribute('data-active-tab');
         wrap.setAttribute('data-active-tab', target);
         topFiltersTabs();
+        // Switching tabs clears the filter applied from the previous tab (its "View all" pill removes it)
+        var previousViewAll = wrap.querySelector('[data-tab-panel="' + previousTab + '"] .yv-top-filter-pill');
+        var productsSection = document.getElementById('CollectionProductsContainer');
+        if (previousViewAll && !previousViewAll.classList.contains('active') && productsSection) {
+            getFilterData(previousViewAll, productsSection.dataset.id, previousViewAll.getAttribute('href'));
+        }
         return;
     }
     var pill = e.target.closest('.yv-top-filter-pill');
