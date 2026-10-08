@@ -98,6 +98,7 @@
     "show_scrollToTop_text": true,
     "custom_scrollToTop_svg": "",
     "googlemapapi": "",
+    "favicon": "shopify://shop_images/Logo-NY_THREADS-01-01.avif",
     "enable_breadcrumb": false,
     "buttonType": "custom",
     "custom_radius": 6,
