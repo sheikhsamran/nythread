@@ -49,7 +49,27 @@
 
       {%- if hasTypeTab -%}
         {%- liquid
+          # Selecting a type replaces any active price filter, so strip price params from the base URL
           assign typeBaseUrl = typeFilter.url_to_remove
+          if hasPriceTab and typeBaseUrl contains '?'
+            assign typeUrlPath = typeBaseUrl | split: '?' | first
+            assign typeUrlQuery = typeBaseUrl | split: '?' | last | split: '&'
+            assign typeKeptParams = ''
+            for param in typeUrlQuery
+              assign paramKey = param | split: '=' | first
+              if paramKey == priceFilter.min_value.param_name or paramKey == priceFilter.max_value.param_name
+                continue
+              endif
+              if typeKeptParams != blank
+                assign typeKeptParams = typeKeptParams | append: '&'
+              endif
+              assign typeKeptParams = typeKeptParams | append: param
+            endfor
+            assign typeBaseUrl = typeUrlPath
+            if typeKeptParams != blank
+              assign typeBaseUrl = typeUrlPath | append: '?' | append: typeKeptParams
+            endif
+          endif
           assign typeSep = '?'
           if typeBaseUrl contains '?'
             assign typeSep = '&'
@@ -85,7 +105,27 @@
             assign priceIsActive = true
           endif
 
+          # Selecting a price replaces any active type filter, so strip type params from the base URL
           assign priceBaseUrl = priceFilter.url_to_remove
+          if hasTypeTab and priceBaseUrl contains '?'
+            assign priceUrlPath = priceBaseUrl | split: '?' | first
+            assign priceUrlQuery = priceBaseUrl | split: '?' | last | split: '&'
+            assign priceKeptParams = ''
+            for param in priceUrlQuery
+              assign paramKey = param | split: '=' | first
+              if paramKey == typeFilter.param_name
+                continue
+              endif
+              if priceKeptParams != blank
+                assign priceKeptParams = priceKeptParams | append: '&'
+              endif
+              assign priceKeptParams = priceKeptParams | append: param
+            endfor
+            assign priceBaseUrl = priceUrlPath
+            if priceKeptParams != blank
+              assign priceBaseUrl = priceUrlPath | append: '?' | append: priceKeptParams
+            endif
+          endif
           assign priceSep = '?'
           if priceBaseUrl contains '?'
             assign priceSep = '&'

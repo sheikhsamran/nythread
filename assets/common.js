@@ -762,6 +762,7 @@ class ProductInfo extends HTMLElement {
                 }
             }, 500);
         }
+        this.selectFirstAvailableSwatch();
         const initialVariant = this.getSelectedVariant(this);
         if (initialVariant) {
             this.updateInventoryBar(initialVariant);
@@ -1064,6 +1065,7 @@ class ProductInfo extends HTMLElement {
                 this.pickupAvailability(variant);
             }
             this.updateOptionValues(html);
+            if (this.selectFirstAvailableSwatch()) return;
             this.updateURL(productUrl, variant?.id);
             this.updateVariantInputs(variant?.id);
             this.updateMedia(html, variant?.featured_media?.id);
@@ -1674,6 +1676,19 @@ class ProductInfo extends HTMLElement {
                 this.postProcessHtmlCallbacks
             );
         }
+    }
+
+    // If the checked color swatch is hidden as unavailable, switch to the first available one.
+    // Returns true when a new selection was triggered (a fresh render will follow).
+    selectFirstAvailableSwatch() {
+        const variantSelects = this.variantSelectors;
+        if (!variantSelects) return false;
+        const checked = variantSelects.querySelector('.color_option.variant_option input.productOption:checked');
+        if (!checked || !checked.closest('.swatch-unavailable')) return false;
+        const firstAvailable = variantSelects.querySelector('.color_option.variant_option:not(.swatch-unavailable) input.productOption');
+        if (!firstAvailable) return false;
+        firstAvailable.click();
+        return true;
     }
 
     setUnavailable() {

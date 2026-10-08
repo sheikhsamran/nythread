@@ -368,7 +368,7 @@
                             endif
                           %}
                           <li
-                            class="{% if colorOptions contains downOption %}color_option{% if settings.variant_image %} image_option{% endif %}{% else %}{{ downOption }}__option{% endif %} variant_option"
+                            class="{% if colorOptions contains downOption %}color_option{% if settings.variant_image %} image_option{% endif %}{% unless value.available %} swatch-unavailable{% endunless %}{% else %}{{ downOption }}__option{% endif %} variant_option"
                           >
                             <label class="visually-hidden" for="{{ option_input_name }}-{{ value | handleize }}">
                               {{- value -}}

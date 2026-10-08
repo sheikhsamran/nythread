@@ -466,3 +466,7 @@
     }
 }
 
+/* Hide color swatches with no available variant for the selected pack size */
+.product-loop-variants .color_option.variant_option.swatch-unavailable {
+    display: none !important;
+}

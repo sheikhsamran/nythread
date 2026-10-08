@@ -89,7 +89,7 @@
     data-url="{{ product.url }}"
     style="--layoutRadius:{% if settings.layout_style == 'rounded' %}10px{% else %}0px{% endif %}">
     <div class="row no-gutters">
-      <div class="col-12 col-sm-12 col-md-6 {{ left_col }} {{ common_class }}">
+      <div class="col-12 col-sm-12 col-md-6 {{ left_col }} main-gallery {{ common_class }}">
         <a class="skip-to-content-link button yv-visually-hidden focus-inside" href="#ProductData-{{ section.id }}">
           {{ 'accessibility.skip_to_product_info' | t }}
         </a>
