@@ -1,1 +1,277 @@
-{"sections":{"main-product":{"type":"main-product","blocks":{"fe3c09d6-15d2-4555-a0f5-c87ab0cf370f":{"type":"title","settings":{"heading_size":"h2","seo_heading":"h2"}},"5540566c-63cd-4a90-b9b6-7707e45d7066":{"type":"price","settings":{}},"reviews_from_amazon_amazon_ratings_n4kH8k":{"type":"shopify:\/\/apps\/reviews-from-amazon\/blocks\/Amazon ratings\/d2a0c9ad-3f97-43c4-9e0c-bc1a4007a201","settings":{"heading":"Amazon ratings"}},"short_description_NzR3BR":{"type":"short_description","settings":{"content":"","lines":2,"link_label":"Learn more"}},"8658b9a0-c9c5-4055-a2e1-56a8f49d0b68":{"type":"variant","settings":{"size_guide_title":"Size Guide","fit_tab_label":"Fit Guide","size_tab_label":"Size Guide","fit_heading":"","fit_video_url":"","step_1_heading":"","step_1_text":"","step_2_heading":"","step_2_text":"","step_3_heading":"","step_3_text":"","support_heading":"","support_1_heading":"","support_1_text":"","support_2_heading":"","support_2_text":"","support_3_heading":"","support_3_text":""}},"16819786-9d1e-449d-966d-08d21e1c91af":{"type":"button","settings":{"dynamic_checkout_btn":false,"enable_fullwidth":false,"show_subscriptions_plan":false,"show_recipient_form":false,"sticky_add_to_cart":true,"sticky_add_to_cart_position":"bottom","pickup_availability":false}},"icons_fj7Rcb":{"type":"icons","settings":{"icon_size":20,"background_color":"#ffffff","show_border":true,"border_color":"#e7e5e0","border_radius":0,"icon1":"shipping","heading1":"Free standard shipping on this order","icon2":"shipping","heading2":"14-day easy returns","icon3":"shipping","heading3":"Secure payment, encrypted checkout"}},"complete_the_set_NY7r93":{"type":"complete_the_set","settings":{"heading":"Complete the set","products":"{{ product.metafields.custom.complete_the_set.value }}"}}},"block_order":["fe3c09d6-15d2-4555-a0f5-c87ab0cf370f","5540566c-63cd-4a90-b9b6-7707e45d7066","reviews_from_amazon_amazon_ratings_n4kH8k","short_description_NzR3BR","8658b9a0-c9c5-4055-a2e1-56a8f49d0b68","16819786-9d1e-449d-966d-08d21e1c91af","icons_fj7Rcb","complete_the_set_NY7r93"],"settings":{"gallery_style":"stacked_grid","show_description":false,"open_description_accordion":false,"show_variant-media":true,"enable_shipping_policy":false,"enable_zoom_icon":true,"enable_thumb":false,"content_divider_mobile":"none","carousel_thumbnail_position":"center","carousel_media_width":"large","carousel_height_desktop":"adapt","carousel_height_mobile":"adapt","width":"half","style":"tabs","accordion_content_alignment":"left","content_heading":"","content":"","content_heading2":"","content2":"","content_heading3":"","content3":""}},"product_info_tabs_KqM6Pq":{"type":"product-info-tabs","name":"Product Info Tabs","settings":{"tab_label_designed_for":"Designed For","tab_label_description":"Description","tab_label_features":"Features","description_content":"{{ product.description }}","show_size_guide_prompt":true,"size_guide_text":"Not sure what size to choose? Check out our","size_guide_link_label":"Size Guide","size_guide_url":"","bgcolor":"primary","section_visibility":"always","top_space_desktop":10,"bottom_space_desktop":20,"top_space_mobile":5,"bottom_space_mobile":10}},"collection_showcase_mGrfLA":{"type":"collection-showcase","blocks":{"collection_NnhYhn":{"type":"collection","settings":{"collection":"","product_list":"{{ product.metafields.custom.get_the_look.value }}","heading":"Men","subheading":"Fabric Technology","subheading_color":"#b08a3e","badge_text":"Empire Soft™ — brushed modal-blend knit","badge_dot_color":"","content_heading":"Built to feel like nothing at all.","content_heading_color":"","description":"A short description of what makes this collection special.","description_color":"","button_text":"Learn more","button_link":""}}},"block_order":["collection_NnhYhn"],"name":"t:sections.collection-showcase.presets.name","settings":{"enable_top_border":false,"enable_bottom_border":false,"border_style":"solid","subheading":"","subheading_color":"#7a2e38","heading":"Get The Look","highlight_text_color":"#000000","highlight_text_gradient":"linear-gradient(90deg, #A678C8 0%, #718CC7 48.08%, #639A47 100%)","highlight_font":"body","seo_heading":"h2","heading_size":"h2","description":"","description_color":"#6e6e6e","enable_view_all_button":false,"view_all_button_text":"View collection","button_size":"med","mobile_button_size":"m-med","show_collection_body":false,"image_height":"square","image_radius_desktop":0,"image_radius_mobile":0,"content_seo_heading":"h3","content_heading_size":"h4","products_per_row":4,"products_count":4,"enable_swipe":true,"mobile_products_visible":"1.5","product_grid_radius_desktop":0,"product_grid_radius_mobile":0,"product_grid_spacing_desktop":4,"product_grid_spacing_mobile":2,"bgcolor":"primary","section_visibility":"always","top_space_desktop":40,"bottom_space_desktop":40,"top_space_mobile":20,"bottom_space_mobile":20}},"video_collection_card_g7tRTA":{"type":"video-collection-card","disabled":true,"name":"Video collection card","settings":{"video_desktop":"{{ product.metafields.custom.video_collection_card.value.desktop_video.value }}","video_url_desktop":"","video_mobile":"{{ product.metafields.custom.video_collection_card.value.mobile_video.value }}","video_url_mobile":"","image_desktop":"{{ product.metafields.custom.video_collection_card.value.desktop_image.value }}","image_mobile":"{{ product.metafields.custom.video_collection_card.value.mobile_image.value }}","aspect_ratio_desktop":"16\/9","aspect_ratio_mobile":"4\/5","heading":"{{ product.metafields.custom.video_collection_card.value.heading.value }}","uppercase_heading":true,"text":"<p>{{ product.metafields.custom.video_collection_card.value.description | metafield_tag }}<\/p>","link":"{{ product.metafields.custom.video_collection_card.value.links.value }}","background_color":"#ffe000","text_color":"#000000","full_width":false,"padding_top":40,"padding_bottom":40,"padding_top_mobile":24,"padding_bottom_mobile":24}},"product_recommendations":{"type":"product_recommendations","settings":{"heading":"We recommend","seo_heading":"h2","products_count":5,"desktop_layout":"static","products_per_row_desktop":"5","product_grid_radius_desktop":0,"product_grid_radius_mobile":0,"product_grid_spacing_desktop":4,"product_grid_spacing_mobile":2,"bgcolor":"primary","top_space_desktop":0,"bottom_space_desktop":60,"top_space_mobile":0,"bottom_space_mobile":30}}},"order":["main-product","product_info_tabs_KqM6Pq","collection_showcase_mGrfLA","video_collection_card_g7tRTA","product_recommendations"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main-product": {
+      "type": "main-product",
+      "blocks": {
+        "fe3c09d6-15d2-4555-a0f5-c87ab0cf370f": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h2",
+            "seo_heading": "h2"
+          }
+        },
+        "5540566c-63cd-4a90-b9b6-7707e45d7066": {
+          "type": "price",
+          "settings": {}
+        },
+        "reviews_from_amazon_amazon_ratings_n4kH8k": {
+          "type": "shopify://apps/reviews-from-amazon/blocks/Amazon ratings/d2a0c9ad-3f97-43c4-9e0c-bc1a4007a201",
+          "settings": {
+            "heading": "Amazon ratings"
+          }
+        },
+        "short_description_NzR3BR": {
+          "type": "short_description",
+          "settings": {
+            "content": "",
+            "lines": 2,
+            "link_label": "Learn more"
+          }
+        },
+        "8658b9a0-c9c5-4055-a2e1-56a8f49d0b68": {
+          "type": "variant",
+          "settings": {
+            "size_guide_title": "Size Guide",
+            "fit_tab_label": "Fit Guide",
+            "size_tab_label": "Size Guide",
+            "fit_heading": "",
+            "fit_video_url": "",
+            "step_1_heading": "",
+            "step_1_text": "",
+            "step_2_heading": "",
+            "step_2_text": "",
+            "step_3_heading": "",
+            "step_3_text": "",
+            "support_heading": "",
+            "support_1_heading": "",
+            "support_1_text": "",
+            "support_2_heading": "",
+            "support_2_text": "",
+            "support_3_heading": "",
+            "support_3_text": ""
+          }
+        },
+        "fbp_fast_bundle_volume_position_qFYPDz": {
+          "type": "shopify://apps/fbp-fast-bundle/blocks/volume_position/9e87fbe2-9041-4c23-acf5-322413994cef",
+          "settings": {}
+        },
+        "16819786-9d1e-449d-966d-08d21e1c91af": {
+          "type": "button",
+          "settings": {
+            "dynamic_checkout_btn": false,
+            "enable_fullwidth": false,
+            "show_subscriptions_plan": false,
+            "show_recipient_form": false,
+            "sticky_add_to_cart": true,
+            "sticky_add_to_cart_position": "bottom",
+            "pickup_availability": false
+          }
+        },
+        "icons_fj7Rcb": {
+          "type": "icons",
+          "settings": {
+            "icon_size": 20,
+            "background_color": "#ffffff",
+            "show_border": true,
+            "border_color": "#e7e5e0",
+            "border_radius": 0,
+            "icon1": "shipping",
+            "heading1": "Free standard shipping on this order",
+            "icon2": "shipping",
+            "heading2": "14-day easy returns",
+            "icon3": "shipping",
+            "heading3": "Secure payment, encrypted checkout"
+          }
+        },
+        "complete_the_set_NY7r93": {
+          "type": "complete_the_set",
+          "settings": {
+            "heading": "Complete the set",
+            "products": "{{ product.metafields.custom.complete_the_set.value }}"
+          }
+        }
+      },
+      "block_order": [
+        "fe3c09d6-15d2-4555-a0f5-c87ab0cf370f",
+        "5540566c-63cd-4a90-b9b6-7707e45d7066",
+        "reviews_from_amazon_amazon_ratings_n4kH8k",
+        "short_description_NzR3BR",
+        "8658b9a0-c9c5-4055-a2e1-56a8f49d0b68",
+        "fbp_fast_bundle_volume_position_qFYPDz",
+        "16819786-9d1e-449d-966d-08d21e1c91af",
+        "icons_fj7Rcb",
+        "complete_the_set_NY7r93"
+      ],
+      "settings": {
+        "gallery_style": "stacked_grid",
+        "show_description": false,
+        "open_description_accordion": false,
+        "show_variant-media": true,
+        "enable_shipping_policy": false,
+        "enable_zoom_icon": true,
+        "enable_thumb": false,
+        "content_divider_mobile": "none",
+        "carousel_thumbnail_position": "center",
+        "carousel_media_width": "large",
+        "carousel_height_desktop": "adapt",
+        "carousel_height_mobile": "adapt",
+        "width": "half",
+        "style": "tabs",
+        "accordion_content_alignment": "left",
+        "content_heading": "",
+        "content": "",
+        "content_heading2": "",
+        "content2": "",
+        "content_heading3": "",
+        "content3": ""
+      }
+    },
+    "product_info_tabs_KqM6Pq": {
+      "type": "product-info-tabs",
+      "name": "Product Info Tabs",
+      "settings": {
+        "tab_label_designed_for": "Designed For",
+        "tab_label_description": "Description",
+        "tab_label_features": "Features",
+        "description_content": "{{ product.description }}",
+        "show_size_guide_prompt": true,
+        "size_guide_text": "Not sure what size to choose? Check out our",
+        "size_guide_link_label": "Size Guide",
+        "size_guide_url": "",
+        "bgcolor": "primary",
+        "section_visibility": "always",
+        "top_space_desktop": 10,
+        "bottom_space_desktop": 20,
+        "top_space_mobile": 5,
+        "bottom_space_mobile": 10
+      }
+    },
+    "collection_showcase_mGrfLA": {
+      "type": "collection-showcase",
+      "blocks": {
+        "collection_NnhYhn": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "product_list": "{{ product.metafields.custom.get_the_look.value }}",
+            "heading": "Men",
+            "subheading": "Fabric Technology",
+            "subheading_color": "#b08a3e",
+            "badge_text": "Empire Soft™ — brushed modal-blend knit",
+            "badge_dot_color": "",
+            "content_heading": "Built to feel like nothing at all.",
+            "content_heading_color": "",
+            "description": "A short description of what makes this collection special.",
+            "description_color": "",
+            "button_text": "Learn more",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_NnhYhn"
+      ],
+      "name": "t:sections.collection-showcase.presets.name",
+      "settings": {
+        "enable_top_border": false,
+        "enable_bottom_border": false,
+        "border_style": "solid",
+        "subheading": "",
+        "subheading_color": "#7a2e38",
+        "heading": "Get The Look",
+        "highlight_text_color": "#000000",
+        "highlight_text_gradient": "linear-gradient(90deg, #A678C8 0%, #718CC7 48.08%, #639A47 100%)",
+        "highlight_font": "body",
+        "seo_heading": "h2",
+        "heading_size": "h2",
+        "description": "",
+        "description_color": "#6e6e6e",
+        "enable_view_all_button": false,
+        "view_all_button_text": "View collection",
+        "button_size": "med",
+        "mobile_button_size": "m-med",
+        "show_collection_body": false,
+        "image_height": "square",
+        "image_radius_desktop": 0,
+        "image_radius_mobile": 0,
+        "content_seo_heading": "h3",
+        "content_heading_size": "h4",
+        "products_per_row": 4,
+        "products_count": 4,
+        "enable_swipe": true,
+        "mobile_products_visible": "1.5",
+        "product_grid_radius_desktop": 0,
+        "product_grid_radius_mobile": 0,
+        "product_grid_spacing_desktop": 4,
+        "product_grid_spacing_mobile": 2,
+        "bgcolor": "primary",
+        "section_visibility": "always",
+        "top_space_desktop": 40,
+        "bottom_space_desktop": 40,
+        "top_space_mobile": 20,
+        "bottom_space_mobile": 20
+      }
+    },
+    "video_collection_card_g7tRTA": {
+      "type": "video-collection-card",
+      "disabled": true,
+      "name": "Video collection card",
+      "settings": {
+        "video_desktop": "{{ product.metafields.custom.video_collection_card.value.desktop_video.value }}",
+        "video_url_desktop": "",
+        "video_mobile": "{{ product.metafields.custom.video_collection_card.value.mobile_video.value }}",
+        "video_url_mobile": "",
+        "image_desktop": "{{ product.metafields.custom.video_collection_card.value.desktop_image.value }}",
+        "image_mobile": "{{ product.metafields.custom.video_collection_card.value.mobile_image.value }}",
+        "aspect_ratio_desktop": "16/9",
+        "aspect_ratio_mobile": "4/5",
+        "heading": "{{ product.metafields.custom.video_collection_card.value.heading.value }}",
+        "uppercase_heading": true,
+        "text": "<p>{{ product.metafields.custom.video_collection_card.value.description | metafield_tag }}</p>",
+        "link": "{{ product.metafields.custom.video_collection_card.value.links.value }}",
+        "background_color": "#ffe000",
+        "text_color": "#000000",
+        "full_width": false,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 24
+      }
+    },
+    "product_recommendations": {
+      "type": "product_recommendations",
+      "settings": {
+        "heading": "We recommend",
+        "seo_heading": "h2",
+        "products_count": 5,
+        "desktop_layout": "static",
+        "products_per_row_desktop": "5",
+        "product_grid_radius_desktop": 0,
+        "product_grid_radius_mobile": 0,
+        "product_grid_spacing_desktop": 4,
+        "product_grid_spacing_mobile": 2,
+        "bgcolor": "primary",
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 60,
+        "top_space_mobile": 0,
+        "bottom_space_mobile": 30
+      }
+    }
+  },
+  "order": [
+    "main-product",
+    "product_info_tabs_KqM6Pq",
+    "collection_showcase_mGrfLA",
+    "video_collection_card_g7tRTA",
+    "product_recommendations"
+  ]
+}
