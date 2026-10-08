@@ -1,0 +1,85 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "page-header": {
+      "type": "main-page",
+      "settings": {
+        "banner": "",
+        "seo_heading": "h2",
+        "banner_height_desktop": "300px",
+        "banner_height_mobile": "auto",
+        "bgcolor": "#f3efec",
+        "textcolor": "#ffffff"
+      }
+    },
+    "1658318505f1feb568": {
+      "type": "faq-section",
+      "blocks": {
+        "c14a79c5-80ab-4ecf-afaf-92d59c5b44e2": {
+          "type": "faq",
+          "settings": {
+            "heading": "Can I buy multiple products at once?",
+            "answer": "<p>Yes, you can order multiple products at once. Simply add the products you wish to purchase to your shopping cart.</p>"
+          }
+        },
+        "3d382006-13d6-496a-865c-f186c23dc69f": {
+          "type": "faq",
+          "settings": {
+            "heading": "How do I know that my order has been confirmed?",
+            "answer": "<p>As soon as you place an order:<br/><br/>You will be redirected to the order confirmation page on our website.<br/><br/>You will also receive an Order Confirmation email on your registered e-mail address and an order confirmation SMS with the details of your order.</p>"
+          }
+        },
+        "1a799c22-ff4b-4880-bbb9-9b70d9cd34a5": {
+          "type": "faq",
+          "settings": {
+            "heading": "Can I order multiple units of a single product?",
+            "answer": "<p>You can order any number units of a single item for personal use on the basis of availability in the stock.</p>"
+          }
+        },
+        "47b9e426-f45b-4313-826d-b08111208b13": {
+          "type": "faq",
+          "settings": {
+            "heading": "Can I change the delivery address after placing an order?",
+            "answer": "<p>Address changes are not allowed once the order is placed.<br/><br/>For more information, we request you to kindly contact our support team.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "c14a79c5-80ab-4ecf-afaf-92d59c5b44e2",
+        "3d382006-13d6-496a-865c-f186c23dc69f",
+        "1a799c22-ff4b-4880-bbb9-9b70d9cd34a5",
+        "47b9e426-f45b-4313-826d-b08111208b13"
+      ],
+      "settings": {
+        "enable_top_border": false,
+        "enable_bottom_border": false,
+        "open_first": true,
+        "section_border_style": "solid",
+        "heading": "",
+        "highlight_text_color": "#000000",
+        "highlight_text_gradient": "linear-gradient(90deg, #A678C8 0%, #718CC7 48.08%, #639A47 100%)",
+        "highlight_font": "body",
+        "seo_heading": "h2",
+        "bgcolor": "primary",
+        "row_bgcolor": "quaternary",
+        "section_visibility": "always",
+        "top_space_desktop": 30,
+        "bottom_space_desktop": 45,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40
+      }
+    }
+  },
+  "order": [
+    "page-header",
+    "1658318505f1feb568"
+  ]
+}

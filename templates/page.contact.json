@@ -1,0 +1,54 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main-page": {
+      "type": "main-page",
+      "settings": {
+        "banner": "",
+        "seo_heading": "h2",
+        "banner_height_desktop": "300px",
+        "banner_height_mobile": "auto",
+        "bgcolor": "#f3efec",
+        "textcolor": "#ffffff"
+      }
+    },
+    "main": {
+      "type": "contact-page-template",
+      "settings": {
+        "contact_heading": "Support",
+        "seo_heading_service": "h3",
+        "phone_heading": "Phone",
+        "phone_number": "+1234567890",
+        "email_heading": "email",
+        "email": "info@email.com",
+        "address_heading": "Address",
+        "address": "#123 abc main city",
+        "form_heading": "Get In Touch",
+        "seo_heading": "h3",
+        "form_button": "SEND MESSAGE"
+      }
+    },
+    "ffdeadde-5060-4cc0-bf3c-1351ff984a59": {
+      "type": "spacer",
+      "settings": {
+        "height_desktop": 2,
+        "height_mobile": 2,
+        "bgcolor": "primary",
+        "custom_color": ""
+      }
+    }
+  },
+  "order": [
+    "main-page",
+    "main",
+    "ffdeadde-5060-4cc0-bf3c-1351ff984a59"
+  ]
+}

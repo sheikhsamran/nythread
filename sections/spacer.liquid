@@ -1,0 +1,165 @@
+<div class="yv-spacer">
+  <div class="container yv-spacer-container">
+    <div class="yv-spacer-inner"></div>
+    {%- unless section.settings.line_color == blank -%}
+      <div class="yv-spacer-line"></div>
+    {%- endunless -%}
+  </div>
+</div>
+
+<style>
+  #shopify-section-{{ section.id }} .yv-spacer {
+    height:{{ section.settings.height_desktop }}px;
+    padding-top:{{ section.settings.top_space_desktop }}px;
+    padding-bottom:{{ section.settings.bottom_space_desktop }}px;
+  }
+  #shopify-section-{{ section.id }} .yv-spacer-container {
+    height:100%;
+    position:relative;
+  }
+  #shopify-section-{{ section.id }} .yv-spacer-inner {
+    height:100%;
+  {% unless section.settings.custom_color contains 'rgba(0,0,0,0)' or section.settings.custom_color == blank %}
+  background:{{- section.settings.custom_color -}};
+    {% else %}
+  background:var(--{{- section.settings.bgcolor -}}ColorBody);
+    {% endunless %}
+  }
+  #shopify-section-{{ section.id }} .yv-spacer-line {
+    position:absolute;
+    top:50%;
+    left:0;
+    right:0;
+    height:1px;
+    transform:translateY(-50%);
+    background:{{ section.settings.line_color }};
+  }
+  @media only screen and (max-width:575px) {
+    #shopify-section-{{ section.id }} .yv-spacer {
+      height:{{ section.settings.height_mobile }}px;
+      padding-top:{{ section.settings.top_space_mobile }}px;
+      padding-bottom:{{ section.settings.bottom_space_mobile }}px;
+    }
+  }
+</style>
+{% schema %}
+{
+  "name": "t:sections.spacer.name",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer"
+    ]
+  },
+  "settings": [
+    {
+      "type": "range",
+      "id": "height_desktop",
+      "label": "t:sections.spacer.settings.height_desktop.label",
+      "default": 2,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "height_mobile",
+      "label": "t:sections.spacer.settings.height_mobile.label",
+      "default": 1,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "t:common.header.space_section.label"
+    },
+    {
+      "type": "range",
+      "id": "top_space_desktop",
+      "label": "t:common.top_space_desktop.label",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "bottom_space_desktop",
+      "label": "t:common.bottom_space_desktop.label",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "top_space_mobile",
+      "label": "t:common.top_space_mobile.label",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "bottom_space_mobile",
+      "label": "t:common.bottom_space_mobile.label",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    },
+    {
+      "type": "header",
+      "content": "t:common.header.color_singular_section.label"
+    },
+    {
+      "type": "select",
+      "id": "bgcolor",
+      "label": "t:common.header.background_section.label",
+      "default": "secondary",
+      "options": [
+        {
+          "value": "primary",
+          "label": "t:common.header.primary.label"
+        },
+        {
+          "value": "secondary",
+          "label": "t:common.header.secondary.label"
+        },
+        {
+          "value": "tertiary",
+          "label": "t:common.header.tertiary.label"
+        },
+        {
+          "value": "quaternary",
+          "label": "t:common.header.quaternary.label"
+        },
+        {
+          "value": "gradient",
+          "label": "t:common.header.gradient.label"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "custom_color",
+      "label": "t:sections.spacer.settings.custom_color.label"
+    },
+    {
+      "type": "color",
+      "id": "line_color",
+      "label": "t:sections.spacer.settings.line_color.label",
+      "info": "t:sections.spacer.settings.line_color.info"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.spacer.presets.name"
+    }
+  ]
+}
+{% endschema %}

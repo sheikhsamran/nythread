@@ -1,0 +1,238 @@
+/* Size guide — content is shown inside the shared side drawer (snippets/side-drawer.liquid) */
+.size-guide-label-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.size-guide-label-row .sizeChart-label {
+  flex-shrink: 0;
+  color: var(--colorTextBody);
+  font-size: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.size-guide-body {
+  padding: 35px;
+}
+
+/* The shared drawer sizes its scroll area as 100% - 63px, which cuts off the
+   bottom when the title bar is taller. Let the scroll area fill what's left. */
+.yv_size_guide_drawer .yv_side_drawer_body {
+  display: flex;
+  flex-direction: column;
+}
+
+.yv_size_guide_drawer [data-drawer-body] {
+  flex: 1;
+  min-height: 0;
+  height: auto;
+}
+
+.size-guide-tabs {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.size-guide-tab {
+  padding: 0 0 8px;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--colorXlightTextBody);
+  color: var(--colorLightTextBody);
+  font-size: 14px;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.size-guide-tab.active,
+.size-guide-tab:hover {
+  color: var(--colorTextBody);
+  border-color: var(--colorTextBody);
+}
+
+.size-guide-panel {
+  display: none;
+}
+
+.size-guide-panel.active {
+  display: block;
+}
+
+/* Fit guide */
+.size-guide-heading {
+  margin: 0 0 16px;
+  font-family: var(--heading-font-family);
+  font-weight: var(--heading-font-weight);
+  font-size: 20px;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.size-guide-subheading {
+  margin: 0 0 4px;
+  font-family: var(--heading-font-family);
+  font-weight: var(--heading-font-weight);
+  font-size: 16px;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.size-guide-media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  margin-bottom: 16px;
+  overflow: hidden;
+  background: var(--colorXlightTextBody);
+}
+
+.size-guide-media video,
+.size-guide-media iframe,
+.size-guide-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  object-fit: cover;
+}
+
+.size-guide-steps,
+.size-guide-support {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.size-guide-step {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+.size-guide-step + .size-guide-step {
+  margin-top: 16px;
+}
+
+.size-guide-step-image img,
+.size-guide-support-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.size-guide-step-image {
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+
+.size-guide-step-text p,
+.size-guide-support-text p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--colorLightTextBody);
+}
+
+.size-guide-divider {
+  margin: 30px 0;
+  border: 0;
+  border-top: 1px solid var(--colorXlightTextBody);
+}
+
+.size-guide-support-item {
+  display: grid;
+  grid-template-columns: 32% 1fr;
+  gap: 16px;
+  align-items: center;
+}
+
+.size-guide-support-item + .size-guide-support-item {
+  margin-top: 16px;
+}
+
+.size-guide-support-image {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.size-guide-step.no-image,
+.size-guide-support-item.no-image {
+  grid-template-columns: 1fr;
+}
+
+/* Size guide tables */
+.size-guide-units {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.size-guide-unit {
+  min-width: 48px;
+  height: 38px;
+  padding: 0 14px;
+  background: transparent;
+  border: 1px solid var(--colorXlightTextBody);
+  color: var(--colorLightTextBody);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.size-guide-unit.active {
+  border-color: var(--colorTextBody);
+  color: var(--colorTextBody);
+}
+
+.size-guide-table-wrap {
+  display: none;
+  overflow-x: auto;
+}
+
+.size-guide-table-wrap.active {
+  display: block;
+}
+
+.size-guide-table {
+  width: 100%;
+  margin: 0;
+  border: 0;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.size-guide-table th,
+.size-guide-table td {
+  padding: 14px 6px;
+  border: 0;
+  border-bottom: 1px solid var(--colorXlightTextBody);
+  text-align: center;
+  font-weight: 400;
+  white-space: nowrap;
+  background: transparent;
+}
+
+.size-guide-table tbody tr:last-child th,
+.size-guide-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+@media (max-width: 767px) {
+  .size-guide-body {
+    padding: 20px 15px;
+  }
+
+  .size-guide-step {
+    grid-template-columns: 80px 1fr;
+  }
+}
+
+/* Background-style video: no controls, not clickable */
+.size-guide-media video,
+.size-guide-media iframe {
+  pointer-events: none;
+}

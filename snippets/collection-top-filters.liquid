@@ -1,0 +1,171 @@
+{%- liquid
+  assign viewAllLabel = 'general.view_all' | t
+
+  assign hasTypeTab = false
+  assign hasPriceTab = false
+  if typeFilter != null
+    assign hasTypeTab = true
+  endif
+  if priceFilter != null
+    assign hasPriceTab = true
+  endif
+
+  assign defaultTab = 'type'
+  unless hasTypeTab
+    assign defaultTab = 'price'
+  endunless
+
+  assign has_collection_title = false
+  if section.settings.collection_title and collection.title != blank
+    assign has_collection_title = true
+  endif
+-%}
+{%- capture crossIcon -%}
+  <span class="yv-top-filter-pill-cross">
+    <svg viewBox="0 0 6 6" width="6" height="6" fill="currentcolor">
+      <path d="m0.8 0q0 0 0.1 0.1l2.1 2.1l2.1-2.1c0.1-0.1 0.2-0.1 0.2 0l0.6 0.6c0.1 0 0.1 0.1 0 0.2l-2.1 2.1l2.1 2.1c0.1 0.1 0.1 0.2 0 0.2l-0.6 0.6c0 0.1-0.1 0.1-0.2 0l-2.1-2.1l-2.1 2.1c-0.1 0.1-0.2 0.1-0.2 0l-0.6-0.6c-0.1 0-0.1-0.1 0-0.2l2.1-2.1l-2.1-2.1c-0.1-0.1-0.1-0.2 0-0.2l0.6-0.6q0-0.1 0.1-0.1z" />
+    </svg>
+  </span>
+{%- endcapture -%}
+<div class="yv-top-filters-wrap" id="TopFiltersWrap" data-active-tab="{{ defaultTab }}">
+  <div class="{% if settings.layout_width == 'boxed' %}container{% else %}container-fluid{% endif %}">
+    {%- if has_collection_title -%}
+      <{{ section.settings.seo_heading }} class="yv-top-filters-heading">{{ collection.title }}</{{ section.settings.seo_heading }}>
+    {%- endif -%}
+
+    {%- if hasTypeTab or hasPriceTab -%}
+      <div class="yv-top-filters-tabs" role="tablist">
+        {%- if hasTypeTab -%}
+          <button type="button" class="yv-top-filters-tab{% if defaultTab == 'type' %} active{% endif %}" data-tab-target="type">
+            Shop By Type
+          </button>
+        {%- endif -%}
+        {%- if hasPriceTab -%}
+          <button type="button" class="yv-top-filters-tab{% if defaultTab == 'price' %} active{% endif %}" data-tab-target="price">
+            Shop By Price
+          </button>
+        {%- endif -%}
+      </div>
+
+      {%- if hasTypeTab -%}
+        {%- liquid
+          assign typeBaseUrl = typeFilter.url_to_remove
+          assign typeSep = '?'
+          if typeBaseUrl contains '?'
+            assign typeSep = '&'
+          endif
+        -%}
+        <div class="yv-top-filters-panel{% if defaultTab == 'type' %} active{% endif %}" data-tab-panel="type">
+          <div class="yv-top-filters-scroll">
+            <a
+              href="{{ typeFilter.url_to_remove }}"
+              class="yv-top-filter-pill{% if typeFilter.active_values.size == 0 %} active{% endif %}"
+              data-top-filter
+            >
+              {{- viewAllLabel -}}
+            </a>
+            {%- for value in typeFilter.values -%}
+              <a
+                href="{% if value.active %}{{ value.url_to_remove }}{% else %}{{ typeBaseUrl }}{{ typeSep }}{{ value.param_name }}={{ value.value | url_encode }}{% endif %}"
+                class="yv-top-filter-pill{% if value.active %} active has-cross{% endif %}{% if value.count == 0 and value.active == false %} disabled{% endif %}"
+                data-top-filter
+              >
+                <span class="yv-top-filter-pill-label">{{- value.label | escape -}}</span>
+                {%- if value.active -%}{{ crossIcon }}{%- endif -%}
+              </a>
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endif -%}
+
+      {%- if hasPriceTab -%}
+        {%- liquid
+          assign priceIsActive = false
+          if priceFilter.min_value.value != null or priceFilter.max_value.value != null
+            assign priceIsActive = true
+          endif
+
+          assign priceBaseUrl = priceFilter.url_to_remove
+          assign priceSep = '?'
+          if priceBaseUrl contains '?'
+            assign priceSep = '&'
+          endif
+
+          assign stepCents = 1500
+          assign maxCents = priceFilter.range_max
+          assign numBuckets = maxCents | plus: stepCents | minus: 1 | divided_by: stepCents
+          assign bucketCount = numBuckets | minus: 1
+
+          assign currentMinCents = priceFilter.min_value.value | default: 0
+          assign currentMaxCents = priceFilter.max_value.value
+        -%}
+        <div class="yv-top-filters-panel{% if defaultTab == 'price' %} active{% endif %}" data-tab-panel="price">
+          <div class="yv-top-filters-scroll">
+            <a
+              href="{{ priceFilter.url_to_remove }}"
+              class="yv-top-filter-pill{% unless priceIsActive %} active{% endunless %}"
+              data-top-filter
+            >
+              {{- viewAllLabel -}}
+            </a>
+            {%- if maxCents > 0 and maxCents < stepCents -%}
+              {%- liquid
+                assign bucketMaxDollars = maxCents | divided_by: 100.0
+                assign bucketActive = false
+                if currentMinCents == 0 and currentMaxCents == maxCents
+                  assign bucketActive = true
+                endif
+              -%}
+              <a
+                href="{{ priceBaseUrl }}{{ priceSep }}{{ priceFilter.min_value.param_name }}=0&{{ priceFilter.max_value.param_name }}={{ bucketMaxDollars }}"
+                class="yv-top-filter-pill{% if bucketActive %} active has-cross{% endif %}"
+                data-top-filter
+              >
+                <span class="yv-top-filter-pill-label">{{- 0 | money }} - {{ maxCents | money -}}</span>
+                {%- if bucketActive -%}{{ crossIcon }}{%- endif -%}
+              </a>
+            {%- elsif bucketCount >= 0 -%}
+              {%- for i in (0..bucketCount) -%}
+                {%- liquid
+                  assign bucketMinCents = i | times: stepCents
+                  assign bucketMinDollars = bucketMinCents | divided_by: 100.0
+                  assign isLastBucket = forloop.last
+                  assign bucketActive = false
+                -%}
+                {%- if isLastBucket -%}
+                  {%- if currentMinCents == bucketMinCents and currentMaxCents == blank -%}
+                    {%- assign bucketActive = true -%}
+                  {%- endif -%}
+                  <a
+                    href="{{ priceBaseUrl }}{{ priceSep }}{{ priceFilter.min_value.param_name }}={{ bucketMinDollars }}"
+                    class="yv-top-filter-pill{% if bucketActive %} active has-cross{% endif %}"
+                    data-top-filter
+                  >
+                    <span class="yv-top-filter-pill-label">{{- bucketMinCents | money -}}+</span>
+                    {%- if bucketActive -%}{{ crossIcon }}{%- endif -%}
+                  </a>
+                {%- else -%}
+                  {%- liquid
+                    assign bucketMaxCents = bucketMinCents | plus: stepCents
+                    assign bucketMaxDollars = bucketMaxCents | divided_by: 100.0
+                    if currentMinCents == bucketMinCents and currentMaxCents == bucketMaxCents
+                      assign bucketActive = true
+                    endif
+                  -%}
+                  <a
+                    href="{{ priceBaseUrl }}{{ priceSep }}{{ priceFilter.min_value.param_name }}={{ bucketMinDollars }}&{{ priceFilter.max_value.param_name }}={{ bucketMaxDollars }}"
+                    class="yv-top-filter-pill{% if bucketActive %} active has-cross{% endif %}"
+                    data-top-filter
+                  >
+                    <span class="yv-top-filter-pill-label">{{- bucketMinCents | money }} - {{ bucketMaxCents | money -}}</span>
+                    {%- if bucketActive -%}{{ crossIcon }}{%- endif -%}
+                  </a>
+                {%- endif -%}
+              {%- endfor -%}
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</div>

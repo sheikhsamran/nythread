@@ -1,0 +1,150 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "dd32eddb-c1d7-44d1-b3da-aae2d992634c": {
+      "type": "gallery-carousel",
+      "blocks": {
+        "template--16809123774757__dd32eddb-c1d7-44d1-b3da-aae2d992634c-1667812205906f8cf0-0": {
+          "type": "image",
+          "settings": {
+            "heading": "Heading",
+            "subheading": "Sub heading",
+            "link": ""
+          }
+        },
+        "template--16809123774757__dd32eddb-c1d7-44d1-b3da-aae2d992634c-1667812205906f8cf0-1": {
+          "type": "image",
+          "settings": {
+            "heading": "Heading",
+            "subheading": "Sub heading",
+            "link": ""
+          }
+        },
+        "template--16809123774757__dd32eddb-c1d7-44d1-b3da-aae2d992634c-1667812205906f8cf0-2": {
+          "type": "image",
+          "settings": {
+            "heading": "Heading",
+            "subheading": "Sub heading",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--16809123774757__dd32eddb-c1d7-44d1-b3da-aae2d992634c-1667812205906f8cf0-0",
+        "template--16809123774757__dd32eddb-c1d7-44d1-b3da-aae2d992634c-1667812205906f8cf0-1",
+        "template--16809123774757__dd32eddb-c1d7-44d1-b3da-aae2d992634c-1667812205906f8cf0-2"
+      ],
+      "disabled": true,
+      "settings": {
+        "enable_fullwidth": true,
+        "enable_top_border": false,
+        "enable_bottom_border": false,
+        "border_style": "solid",
+        "heading": "Add Your Heading Here",
+        "highlight_text_color": "#000000",
+        "highlight_text_gradient": "linear-gradient(90deg, #A678C8 0%, #718CC7 48.08%, #639A47 100%)",
+        "highlight_font": "body",
+        "seo_heading": "h2",
+        "heading_size": "h2",
+        "gallery_style": "auto-slide",
+        "slide_direction": "right",
+        "image_style": "circle",
+        "image_size": "small",
+        "text_alignment": "center",
+        "enable_image_animation": true,
+        "image_crop": false,
+        "image_background": true,
+        "enable_swipe": true,
+        "bgcolor": "primary",
+        "section_visibility": "always",
+        "top_space_desktop": 30,
+        "bottom_space_desktop": 30,
+        "top_space_mobile": 30,
+        "bottom_space_mobile": 30
+      }
+    },
+    "promotion_banner_aDN78T": {
+      "type": "promotion-banner",
+      "disabled": true,
+      "name": "t:sections.promotion-banner.presets.name",
+      "settings": {
+        "full_width": false,
+        "border_radius": 16,
+        "heading": "Unbelievable Deals Winter Sales Upto 50%",
+        "text": "",
+        "label": "Shop now",
+        "link": "",
+        "font_size": "large",
+        "textcolor": "#0842a0",
+        "bgcolor": "#d3e3fd",
+        "btntextcolor": "#000000",
+        "btnbgcolor": "#ffffff",
+        "btnborder": "#ffffff",
+        "section_visibility": "always",
+        "show_icon_on_image": false,
+        "icon": "heart",
+        "left_to_right": 90,
+        "top_to_bottom": 50,
+        "mobile_left_to_right": 50,
+        "mobile_top_to_bottom": 50,
+        "icon_animated_color": "#000000",
+        "top_space_desktop": 30,
+        "bottom_space_desktop": 30,
+        "top_space_mobile": 30,
+        "bottom_space_mobile": 30
+      }
+    },
+    "breadcrumb_6eRHL7": {
+      "type": "breadcrumb",
+      "name": "Breadcrumb",
+      "settings": {}
+    },
+    "main-collection": {
+      "type": "main-collection",
+      "settings": {
+        "collection_title": true,
+        "seo_heading": "h2",
+        "collection_description": false,
+        "collection_description_position": "above",
+        "collpasible_collection_description": false,
+        "pagination_type": "paged",
+        "products_per_page": 16,
+        "product_count": true,
+        "product_grid_spacing_desktop": 7,
+        "product_grid_spacing_mobile": 7,
+        "enable_top_type_price_filters": true,
+        "enable_filtering": true,
+        "filters_layout": "sidebar",
+        "filters_style": "border",
+        "enable_sorting": true,
+        "enable_display_options": false,
+        "filter_menu": "",
+        "filters_radius": 0,
+        "collection_image": false,
+        "banner_height_desktop": "auto",
+        "banner_height_mobile": "auto",
+        "bgcolor": "#ffffff",
+        "textcolor": "#000000",
+        "filter_card_bg_color": "#dbe1e9",
+        "filter_menu_color": "#000000",
+        "filter_sub_menu_color": "#393939",
+        "filter_menu_bg": "#ffffff",
+        "filter_menu_border": "rgba(0,0,0,0)"
+      }
+    }
+  },
+  "order": [
+    "dd32eddb-c1d7-44d1-b3da-aae2d992634c",
+    "promotion_banner_aDN78T",
+    "breadcrumb_6eRHL7",
+    "main-collection"
+  ]
+}

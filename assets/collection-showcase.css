@@ -1,0 +1,132 @@
+.collection-showcase-header-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.collection-showcase-header {
+  margin-bottom: 20px;
+}
+.collection-showcase-body {
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+
+.collection-showcase-content {
+  padding-left: 60px;
+}
+
+.yv-tab-btn-pane {
+  display: inline-flex;
+}
+
+.yv-tab-button {
+  display: none !important;
+}
+
+/* Women/Men pill toggle */
+.collection-showcase-pill-tabs {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  border-bottom: none;
+  margin-bottom: 0;
+  background: #f7f7f5;
+  border-radius: 999px;
+  padding: 4px;
+  gap: 2px;
+}
+
+.collection-showcase-pill-tabs .yv-tab-link {
+  margin-right: 0;
+  padding: 9px 20px;
+  opacity: 1;
+  border-radius: 999px;
+  color: var(--colorTextBody);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.collection-showcase-pill-tabs .yv-tab-link:after {
+  display: none;
+}
+
+.collection-showcase-pill-tabs .yv-tab-item:not(.active) .yv-tab-link {
+  opacity: 0.55;
+}
+
+.collection-showcase-pill-tabs .yv-tab-item.active .yv-tab-link {
+  background-color: var(--colorTextBody);
+  color: var(--primaryColorBody);
+  opacity: 1;
+}
+
+/* "View collection" text link */
+.collection-showcase-view-link {
+  align-items: center;
+  gap: 6px;
+  color: var(--colorTextBody);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 600;
+}
+
+.collection-showcase-view-link-arrow {
+  display: inline-flex;
+}
+
+.collection-showcase-view-link-arrow svg {
+  width: 14px;
+  height: 10px;
+}
+
+/* Eyebrow text */
+.collection-showcase-header .heading-subtitle,
+.collection-showcase-content-panel .heading-subtitle {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Fabric/feature pill badge */
+.collection-showcase-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid var(--primaryBorderColor);
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: var(--smallText);
+  margin-bottom: 16px;
+}
+
+.collection-showcase-badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--theme-color);
+  flex: none;
+}
+
+/* Gap between description and CTA button */
+.collection-showcase-cta {
+  margin-top: 24px;
+}
+
+@media only screen and (max-width: 767px) {
+  .collection-showcase-body {
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
+
+  .collection-showcase-content {
+    padding-left: 0;
+    margin-top: 24px;
+  }
+
+  .collection-showcase-header-right {
+    justify-content: flex-start;
+    margin-top: 16px;
+  }
+}

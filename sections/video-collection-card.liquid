@@ -1,0 +1,574 @@
+{%- liquid
+  assign link = section.settings.link
+  assign desktop_video = section.settings.video_desktop
+  assign mobile_video = section.settings.video_mobile | default: desktop_video
+  assign desktop_url = section.settings.video_url_desktop
+  assign mobile_url = section.settings.video_url_mobile | default: desktop_url
+  assign has_desktop = false
+  if desktop_video != blank or desktop_url != blank
+    assign has_desktop = true
+  endif
+  assign has_mobile = false
+  if mobile_video != blank or mobile_url != blank
+    assign has_mobile = true
+  endif
+  assign desktop_image = section.settings.image_desktop | default: section.settings.image_mobile
+  assign mobile_image = section.settings.image_mobile | default: desktop_image
+  assign has_media = false
+  if has_desktop or has_mobile or desktop_image != blank
+    assign has_media = true
+  endif
+  assign has_content = false
+  if section.settings.heading != blank or section.settings.text != blank
+    assign has_content = true
+  endif
+-%}
+
+{%- if has_media or has_content -%}
+
+<style>
+  #VideoCollectionCard-{{ section.id }} {
+    --vcc-bg: {{ section.settings.background_color }};
+    --vcc-text: {{ section.settings.text_color }};
+    --vcc-ratio-desktop: {{ section.settings.aspect_ratio_desktop }};
+    --vcc-ratio-mobile: {{ section.settings.aspect_ratio_mobile }};
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+  }
+  @media screen and (min-width: 768px) {
+    #VideoCollectionCard-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .vcc-card {
+    position: relative;
+    display: block;
+    color: var(--vcc-text);
+    overflow: hidden;
+  }
+  .vcc-card__link {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+  }
+  .vcc-card__media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: var(--vcc-ratio-mobile);
+    background: #000;
+    overflow: hidden;
+  }
+  .vcc-card__video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .vcc-card__video--desktop { display: none; }
+  @media screen and (min-width: 990px) {
+    .vcc-card__media { aspect-ratio: var(--vcc-ratio-desktop); }
+    .vcc-card__video--desktop { display: block; }
+    .vcc-card__video--mobile { display: none; }
+  }
+
+  .vcc-card__controls {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  @media screen and (min-width: 990px) {
+    .vcc-card__controls { top: 40px; right: 40px; gap: 36px; }
+  }
+  .vcc-card__control {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.35));
+  }
+  .vcc-card__control svg { width: 24px; height: 24px; }
+  .vcc-card__control [data-state-on] { display: none; }
+  .vcc-card__control[aria-pressed="true"] [data-state-on] { display: block; }
+  .vcc-card__control[aria-pressed="true"] [data-state-off] { display: none; }
+
+  .vcc-card__content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 20px;
+    background: var(--vcc-bg);
+    color: var(--vcc-text);
+  }
+  @media screen and (min-width: 990px) {
+    .vcc-card__content { padding: 40px 40px; }
+  }
+  .vcc-card__title {
+    margin: 0 0 8px;
+    font-size: 20px;
+    line-height: 1.2;
+    font-weight: 700;
+    color: inherit;
+    {% if section.settings.uppercase_heading %}text-transform: uppercase;{% endif %}
+  }
+  .vcc-card__copy,
+  .vcc-card__copy p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: inherit;
+  }
+  .vcc-card__icon {
+    flex-shrink: 0;
+    display: inline-flex;
+    transition: transform 0.25s ease;
+  }
+  .vcc-card__icon svg { width: 24px; height: 24px; }
+  .vcc-card:hover .vcc-card__icon { transform: translateX(6px); }
+</style>
+
+<div id="VideoCollectionCard-{{ section.id }}" class="video-collection-card">
+  <div class="{% unless section.settings.full_width %}container{% endunless %}">
+    <video-collection-card class="vcc-card">
+      {%- if link != blank -%}
+        <a
+          href="{{ link }}"
+          class="vcc-card__link"
+          aria-label="{{ section.settings.heading | strip_html | escape }}"
+        ></a>
+      {%- endif -%}
+
+      {%- if has_media -%}
+      <div class="vcc-card__media">
+        {%- if has_desktop or has_mobile -%}
+          {%- if has_desktop -%}
+            <video
+              class="vcc-card__video vcc-card__video--desktop videoBackgroundFile"
+              data-breakpoint="desktop"
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              {% if desktop_video != blank and desktop_video.preview_image %}
+                poster="{{ desktop_video.preview_image | image_url: width: 1920 }}"
+              {% endif %}
+            >
+              {%- if desktop_video != blank -%}
+                {%- for source in desktop_video.sources -%}
+                  {%- if source.format == 'mp4' -%}
+                    <source src="{{ source.url }}" type="{{ source.mime_type }}">
+                  {%- endif -%}
+                {%- endfor -%}
+              {%- else -%}
+                <source src="{{ desktop_url }}" type="video/mp4">
+              {%- endif -%}
+            </video>
+          {%- endif -%}
+          {%- if has_mobile -%}
+            <video
+              class="vcc-card__video vcc-card__video--mobile videoBackgroundFile"
+              data-breakpoint="mobile"
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              {% if mobile_video != blank and mobile_video.preview_image %}
+                poster="{{ mobile_video.preview_image | image_url: width: 1000 }}"
+              {% endif %}
+            >
+              {%- if mobile_video != blank -%}
+                {%- for source in mobile_video.sources -%}
+                  {%- if source.format == 'mp4' -%}
+                    <source src="{{ source.url }}" type="{{ source.mime_type }}">
+                  {%- endif -%}
+                {%- endfor -%}
+              {%- else -%}
+                <source src="{{ mobile_url }}" type="video/mp4">
+              {%- endif -%}
+            </video>
+          {%- endif -%}
+
+          <div class="vcc-card__controls">
+            <button
+              type="button"
+              class="vcc-card__control"
+              data-mute-toggle
+              aria-pressed="false"
+              aria-label="Unmute"
+            >
+              {%- comment -%} Muted (default) {%- endcomment -%}
+              <svg data-state-off viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M11 5 6 9H3v6h3l5 4V5z"/>
+                <line x1="22" y1="9" x2="16" y2="15"/>
+                <line x1="16" y1="9" x2="22" y2="15"/>
+              </svg>
+              {%- comment -%} Sound on {%- endcomment -%}
+              <svg data-state-on viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M11 5 6 9H3v6h3l5 4V5z"/>
+                <path d="M15.5 8.5a5 5 0 0 1 0 7"/>
+                <path d="M18.5 5.5a9 9 0 0 1 0 13"/>
+              </svg>
+            </button>
+            <button
+              type="button"
+              class="vcc-card__control"
+              data-play-toggle
+              aria-pressed="false"
+              aria-label="Pause"
+            >
+              {%- comment -%} Playing (default) → show pause icon {%- endcomment -%}
+              <svg data-state-off viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <rect x="6" y="4" width="4" height="16"/>
+                <rect x="14" y="4" width="4" height="16"/>
+              </svg>
+              {%- comment -%} Paused → show play icon {%- endcomment -%}
+              <svg data-state-on viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M7 4v16l13-8z"/>
+              </svg>
+            </button>
+          </div>
+        {%- elsif desktop_image != blank -%}
+          {%- assign image_alt = desktop_image.alt | default: section.settings.heading | strip_html | escape -%}
+          {{
+            desktop_image
+            | image_url: width: 2400
+            | image_tag:
+              class: 'vcc-card__video vcc-card__video--desktop',
+              widths: '990, 1400, 1800, 2400',
+              sizes: '100vw',
+              loading: 'lazy',
+              alt: image_alt
+          }}
+          {{
+            mobile_image
+            | image_url: width: 1200
+            | image_tag:
+              class: 'vcc-card__video vcc-card__video--mobile',
+              widths: '400, 600, 800, 1200',
+              sizes: '100vw',
+              loading: 'lazy',
+              alt: image_alt
+          }}
+        {%- endif -%}
+      </div>
+      {%- endif -%}
+
+      {%- if has_content -%}
+        <div class="vcc-card__content">
+          <div class="vcc-card__text">
+            {%- if section.settings.heading != blank -%}
+              <h3 class="vcc-card__title heading-font">{{ section.settings.heading }}</h3>
+            {%- endif -%}
+            {%- if section.settings.text != blank -%}
+              <div class="vcc-card__copy">{{ section.settings.text }}</div>
+            {%- endif -%}
+          </div>
+          {%- if link != blank -%}
+            <span class="vcc-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 5 16 12 9 19"/>
+              </svg>
+            </span>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </video-collection-card>
+  </div>
+</div>
+
+<script>
+  if (!customElements.get('video-collection-card')) {
+    customElements.define('video-collection-card', class extends HTMLElement {
+      connectedCallback() {
+        this.videos = Array.from(this.querySelectorAll('video'));
+        if (!this.videos.length) return;
+
+        this.muteBtn = this.querySelector('[data-mute-toggle]');
+        this.playBtn = this.querySelector('[data-play-toggle]');
+        this.userPaused = false;
+        this.inView = false;
+        this.mql = window.matchMedia('(min-width: 990px)');
+
+        this.muted = true;
+
+        this.muteBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          this.setMuted(!this.muted);
+        });
+        this.playBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          this.userPaused = !this.activeVideo().paused;
+          this.sync();
+        });
+
+        // Keep the play/pause icon in step with what the video is really doing
+        this.videos.forEach((v) => {
+          v.muted = true;
+          v.addEventListener('play', () => this.updateButtons());
+          v.addEventListener('pause', () => this.updateButtons());
+          v.addEventListener('volumechange', () => this.updateButtons());
+        });
+
+        this.mql.addEventListener('change', () => this.sync());
+
+        new IntersectionObserver((entries) => {
+          this.inView = entries[0].isIntersecting;
+          this.sync();
+        }, { threshold: 0.25 }).observe(this);
+      }
+
+      activeVideo() {
+        const want = this.mql.matches ? 'desktop' : 'mobile';
+        return this.videos.find((v) => v.dataset.breakpoint === want) || this.videos[0];
+      }
+
+      setMuted(muted) {
+        this.muted = muted;
+        const active = this.activeVideo();
+        this.videos.forEach((v) => { v.muted = v === active ? muted : true; });
+        // Unmuting can make the browser pause the video; resume it inside this click
+        if (!muted && !this.userPaused) this.play(active);
+        this.updateButtons();
+      }
+
+      play(video) {
+        const p = video.play();
+        if (p && p.catch) {
+          p.catch(() => {
+            // Browser refused playback with sound: fall back to muted so it keeps playing
+            if (!video.muted) {
+              this.muted = true;
+              video.muted = true;
+              video.play().catch(() => {});
+            }
+          });
+        }
+      }
+
+      sync() {
+        const active = this.activeVideo();
+        this.videos.forEach((v) => {
+          if (v !== active) {
+            v.muted = true;
+            v.pause();
+          }
+        });
+        active.muted = this.muted;
+        if (this.inView && !this.userPaused) {
+          this.play(active);
+        } else {
+          active.pause();
+        }
+        this.updateButtons();
+      }
+
+      updateButtons() {
+        const active = this.activeVideo();
+        const muted = active.muted;
+        this.muteBtn.setAttribute('aria-pressed', String(!muted));
+        this.muteBtn.setAttribute('aria-label', muted ? 'Unmute' : 'Mute');
+        const paused = this.userPaused || (active.paused && this.inView);
+        this.playBtn.setAttribute('aria-pressed', String(paused));
+        this.playBtn.setAttribute('aria-label', paused ? 'Play' : 'Pause');
+      }
+    });
+  }
+</script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Video collection card",
+  "tag": "section",
+  "class": "section-video-collection-card",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Video"
+    },
+    {
+      "type": "video",
+      "id": "video_desktop",
+      "label": "Desktop video",
+      "info": "Autoplays muted and loops."
+    },
+    {
+      "type": "text",
+      "id": "video_url_desktop",
+      "label": "Desktop video URL (.mp4)",
+      "info": "Used if no desktop video is uploaded."
+    },
+    {
+      "type": "video",
+      "id": "video_mobile",
+      "label": "Mobile video",
+      "info": "Optional. Falls back to the desktop video."
+    },
+    {
+      "type": "text",
+      "id": "video_url_mobile",
+      "label": "Mobile video URL (.mp4)"
+    },
+    {
+      "type": "header",
+      "content": "Image",
+      "info": "Shown only when no video is set. Video always takes priority."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Desktop image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Mobile image",
+      "info": "Optional. Falls back to the desktop image."
+    },
+    {
+      "type": "header",
+      "content": "Media size"
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio_desktop",
+      "label": "Desktop aspect ratio",
+      "default": "16/9",
+      "options": [
+        { "value": "16/9", "label": "16:9" },
+        { "value": "21/9", "label": "21:9" },
+        { "value": "4/3", "label": "4:3" },
+        { "value": "1/1", "label": "1:1" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio_mobile",
+      "label": "Mobile aspect ratio",
+      "default": "4/5",
+      "options": [
+        { "value": "4/5", "label": "4:5" },
+        { "value": "9/16", "label": "9:16" },
+        { "value": "1/1", "label": "1:1" },
+        { "value": "16/9", "label": "16:9" }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Check out the Lift Seamless collection"
+    },
+    {
+      "type": "checkbox",
+      "id": "uppercase_heading",
+      "label": "Uppercase heading",
+      "default": true
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Description",
+      "default": "<p>If you're looking for high-rise, Lift Seamless OG is your girl. If mid-rise is more your thing, go for 2.0.</p>"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link",
+      "info": "Applies to the whole card (video and text)."
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Content background",
+      "default": "#FFE000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Content text",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding (desktop)",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding (desktop)",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Top padding (mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Bottom padding (mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video collection card"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,161 @@
+
+@font-face {
+  font-family: Poppins;
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("//www.nythreads.com/cdn/fonts/poppins/poppins_n4.0ba78fa5af9b0e1a374041b3ceaadf0a43b41362.woff2") format("woff2"),
+       url("//www.nythreads.com/cdn/fonts/poppins/poppins_n4.214741a72ff2596839fc9760ee7a770386cf16ca.woff") format("woff");
+}
+
+@font-face {
+  font-family: Poppins;
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("//www.nythreads.com/cdn/fonts/poppins/poppins_n7.56758dcf284489feb014a026f3727f2f20a54626.woff2") format("woff2"),
+       url("//www.nythreads.com/cdn/fonts/poppins/poppins_n7.f34f55d9b3d3205d2cd6f64955ff4b36f0cfd8da.woff") format("woff");
+}
+
+@font-face {
+  font-family: Poppins;
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  src: url("//www.nythreads.com/cdn/fonts/poppins/poppins_i4.846ad1e22474f856bd6b81ba4585a60799a9f5d2.woff2") format("woff2"),
+       url("//www.nythreads.com/cdn/fonts/poppins/poppins_i4.56b43284e8b52fc64c1fd271f289a39e8477e9ec.woff") format("woff");
+}
+
+@font-face {
+  font-family: Poppins;
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+  src: url("//www.nythreads.com/cdn/fonts/poppins/poppins_i7.42fd71da11e9d101e1e6c7932199f925f9eea42d.woff2") format("woff2"),
+       url("//www.nythreads.com/cdn/fonts/poppins/poppins_i7.ec8499dbd7616004e21155106d13837fff4cf556.woff") format("woff");
+}
+
+@font-face {
+  font-family: Poppins;
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("//www.nythreads.com/cdn/fonts/poppins/poppins_n4.0ba78fa5af9b0e1a374041b3ceaadf0a43b41362.woff2") format("woff2"),
+       url("//www.nythreads.com/cdn/fonts/poppins/poppins_n4.214741a72ff2596839fc9760ee7a770386cf16ca.woff") format("woff");
+}
+
+:root {
+  --gray: #ececec;
+  --dark-gray: #747474;
+  --green:#6cad61;
+  --red:#ec7c7c;
+  --heading-font-family:Poppins,sans-serif;
+  --heading-font-weight:400;
+  --font-family:Poppins,sans-serif;
+  --body-font-weight:400;
+  --body-font-weight-bold: 300;
+  --thin:100;
+  --light:300;
+  --normal:400;
+  --medium:500;
+  --semibold:600;
+  --bold:700; 
+  --extrabold:900;
+  --theme-color: #4c5765;
+  --theme-light-color: rgba(76, 87, 101, 0.1);
+  --colorTextBody: #000000;
+  --colorLightTextBody: rgba(0, 0, 0, 0.5);
+  --colorXlightTextBody: rgba(0, 0, 0, 0.3);
+  --colorXXlightTextBody: rgba(0, 0, 0, 0.1);
+  --cartDotColor: #efb34c;
+  --cartDotColorLight:rgba(239, 179, 76, 0.3);
+  --cartDotColorNull:rgba(239, 179, 76, 0);
+  --colorBtnPrimary: #000000;
+  --colorBtnPrimaryText: #ffffff; 
+  --colorBtnPrimaryBorder: #000000; 
+  --colorBtnSecondary: #ffffff;
+  --colorBtnSecondaryText:#000000;
+  --colorBtnSecondaryBorder:#000000;  
+  --primaryColorBody: #ffffff;
+  --saleBadgeBg:#efb34c;
+  --saleBadgeText:#ffffff;
+  --soldBadgeBg:#E22120;
+  --soldBadgeText:#ffffff;
+  --preorderBadgeBg:#E22120;
+  --preorderBadgeText:#ffffff;
+  --customBadgeBg:#000000;
+  --customBadgeText:#ffffff;
+  --secondaryColorBody: #f5f5f7;
+ 
+  
+--primarySocialIconBg:#e6e6e6;
+    --primaryAlternateBg:#f2f2f2;--secondarySocialIconBg:#d9d9e0;
+    --secondaryAlternateBg:#e7e7ec;--tertiarySocialIconBg:#133e63;
+    --tertiaryAlternateBg:#133e63;--quaternarySocialIconBg:#c1c7d0;
+    --quaternaryAlternateBg:#cfd4db;--secondarycolorTextBody: #000000;
+  --secondaryColorLightTextBody: rgba(0, 0, 0, 0.5);
+  --secondaryColorXlightTextBody: rgba(0, 0, 0, 0.3);
+  --secondary_heading_color: #000000;
+  --secondary_subheading_color: #181818;
+  --tertiaryColorBody:#0b2338;
+  --tertiarycolorTextBody: #ffffff;
+  --tertiaryColorLightTextBody: rgba(255, 255, 255, 0.5);
+  --tertiaryColorXlightTextBody: rgba(255, 255, 255, 0.3);
+  --tertiary_heading_color: #ffffff;
+  --tertiary_subheading_color: #181818;
+  --gradientColorBody: linear-gradient(262deg, rgba(225, 236, 250, 1), rgba(255, 255, 255, 1) 100%);
+  --quaternaryColorBody: #dee1e6;
+  --quaternarycolorTextBody: #181818;
+  --quaternaryColorLightTextBody: rgba(24, 24, 24, 0.5);
+  --quaternaryColorXlightTextBody: rgba(24, 24, 24, 0.3);
+  --quaternary_heading_color: #181818;
+  --quaternary_subheading_color: #181818;
+  --colorImageBg: #FFFFFF;
+  --colorImageBorder: #eee;
+  --productImageBorder:0;
+  --articleImageBorder:0;
+  --collectionImageBorder:0;
+  --colorTextSavings: #E22120;
+  --colorBgSavings: #ffd1d1;
+  --heading_color: #000000;
+  --subheading_color: #181818;
+  --heading_base_size: 1.05;
+  --heading_spacing: 0.0em;
+  --heading_line_height: 1.2;
+  --base_spacing: 0.0em;
+  --base_line_height: 1.5;
+  --text_base_size: 1.0;
+  --buttonRadius: 0px;
+  --productGridRadius: 20px;
+  --headingTextTransform:;
+  --buttonFontFamily: var(--font-family);
+  --variantFontFamily: var(--heading-font-family);
+  --filtersHeadingFontFamily: var(--font-family);
+  --priceFontFamily: var(--font-family);
+  --tabHeadingFontFamily: var(--font-family);
+  --tabHeadingTextTransform:;
+  --navigationFontFamily: var(--font-family);
+  --navigationTextTransform:;
+  --variantTextTransform:;
+  --xsmallText:calc(var(--text_base_size) * 10px);
+  --smallText: calc(var(--text_base_size) * 12px);
+  --text: calc(var(--text_base_size) * 14px);
+  --mediumText: calc(var(--text_base_size) * 14px);
+  --largeText: calc(var(--text_base_size) * 18px);
+  --xlargeText:  calc(var(--text_base_size) * 20px);
+  --buttonAnimationDirection:;
+}
+@media (min-width:1025px) {
+  .button:before,
+  .pdp-action-container button.shopify-payment-button__button--hidden:before,
+  .pdp-action-container button.shopify-payment-button__button:before,
+  .tertiary-button:before {
+      content: "";
+      position: absolute;z-index: -1;
+      transition: 0.6s ease-in-out;
+  }
+  .button:hover:before,
+  .pdp-action-container button.shopify-payment-button__button--hidden:hover:before,
+  .pdp-action-container button.shopify-payment-button__button:hover:before,
+  .secondary-button:hover:before {}
+}

@@ -1,0 +1,47 @@
+{{ 'complete-the-set.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign setProducts = block.settings.products
+  assign setProductsCount = setProducts.size
+-%}
+{%- if setProductsCount > 0 -%}
+  <div class="complete-the-set-wrapper" {{ block.shopify_attributes }}>
+    <div class="complete-the-set-header">
+      <h6 class="complete-the-set-heading">
+        {%- if block.settings.heading != blank -%}
+          {{- block.settings.heading -}}
+        {%- else -%}
+          {{- 'products.product.complete_the_set.heading' | t -}}
+        {%- endif -%}
+      </h6>
+      <span class="complete-the-set-count">
+        {{- 'products.product.complete_the_set.pieces_count' | t: count: setProductsCount -}}
+      </span>
+    </div>
+    <div
+      class="complete-the-set-slider"
+      {%- if setProductsCount > 2 %}
+        data-flickity-slider='
+          {"wrapAround":false,
+          "cellAlign": "left",
+          "freeScroll": true,
+          "dragThreshold":true,
+          "contain": true,
+          "groupCells": false,
+          "touchVerticalScroll": false,
+          "prevNextButtons": false,
+          "pageDots": false}
+        '
+      {%- endif %}
+    >
+      {%- for setProduct in setProducts -%}
+        {%- assign productFormId = 'complete-the-set-form-' | append: section.id | append: '-' | append: forloop.index -%}
+        {%- render 'product-grid',
+          product: setProduct,
+          productFormId: productFormId,
+          productClasses: 'small-product-card',
+          customRadius: true
+        -%}
+      {%- endfor -%}
+    </div>
+  </div>
+{%- endif -%}

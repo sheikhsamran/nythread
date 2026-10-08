@@ -1,0 +1,797 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "slider_wgBHc9": {
+      "type": "slider",
+      "blocks": {
+        "slide_yBGTNB": {
+          "type": "slide",
+          "settings": {
+            "video_desktop": "shopify://files/videos/DTC Banner Video (Turtleneck) - Sahal 1880x705.mp4",
+            "video_mobile": "shopify://files/videos/DTC Banner Video (Turtleneck) - Sahal 440x660.mp4",
+            "videofile": "",
+            "banner_subtitle": "",
+            "glass_effect": false,
+            "banner_title": "Fit, the New York way.",
+            "seo_heading": "h1",
+            "banner_desc": "Considered cuts and premium fabrics, without the premium markup.",
+            "description_size": "text-medium",
+            "desktop_title_size": 56,
+            "mobile_title_size": 32,
+            "button_size": "default",
+            "mobile_button_size": "m-default",
+            "button_text": "Shop Women's Essentials",
+            "button_link": "shopify://collections/women",
+            "button_text2": "Explore Men's Essentials",
+            "button_link2": "shopify://collections/men",
+            "button2_alternate": true,
+            "desktop_content_position": "d-bottom-left",
+            "mobile_content_position": "m-bottom-left",
+            "title_color": "#ffffff",
+            "subtitle_color": "#ffffff",
+            "subtitle_bgcolor": "rgba(0,0,0,0)",
+            "desc_color": "#ffffff",
+            "btn_bg": "#000000",
+            "btn_text": "#ffffff",
+            "btn_border": "#000000",
+            "overlay_color": "",
+            "overlay_opacity": 50,
+            "title_color_m": "#ffffff",
+            "subtitle_color_m": "#ffffff",
+            "subtitle_bgcolor_m": "rgba(0,0,0,0)",
+            "desc_color_m": "#ffffff",
+            "btn_bg_m": "#ffffff",
+            "btn_text_m": "#000000",
+            "btn_border_m": "#ffffff",
+            "overlay_color_m": "",
+            "overlay_opacity_m": 50
+          }
+        }
+      },
+      "block_order": [
+        "slide_yBGTNB"
+      ],
+      "name": "t:sections.slider.presets.name",
+      "settings": {
+        "nav_style": "dots-center-right",
+        "content_below_image": false,
+        "rotate": false,
+        "interval": 5,
+        "desktop_height": "adapt_image",
+        "mobile_height": "adapt_image",
+        "bgcolor": "primary"
+      }
+    },
+    "collection_showcase_9cwKtF": {
+      "type": "collection-showcase",
+      "blocks": {
+        "collection_kCBYfw": {
+          "type": "collection",
+          "settings": {
+            "collection": "men-loungewear-and-pajamas",
+            "product_list": [
+              "mens-waffle-robe-soft-knit-bathrobe-with-pockets"
+            ],
+            "heading": "Men",
+            "collection_image": "shopify://shop_images/Men_Loungewear_Collection_Banner-3.jpg",
+            "subheading": "",
+            "subheading_color": "#b08a3e",
+            "badge_text": "OEKO-TEX® Standard 100 certified",
+            "badge_dot_color": "",
+            "content_heading": "<strong>For the moment the city goes quiet</strong>",
+            "content_heading_color": "",
+            "description": "Loungewear made for slow mornings and quiet nights in",
+            "description_color": "",
+            "button_text": "Shop The Lounge Edit",
+            "button_link": "shopify://collections/men-loungewear-and-pajamas"
+          }
+        },
+        "collection_k4Q6NP": {
+          "type": "collection",
+          "settings": {
+            "collection": "women-loungewear-and-pajamas",
+            "product_list": [
+              "womens-robe-long-knit-bathrobe-3-4-sleeves"
+            ],
+            "heading": "Women",
+            "collection_image": "shopify://shop_images/Women_Loungewear_Collection_Banner-4.jpg",
+            "subheading": "",
+            "subheading_color": "#b08a3e",
+            "badge_text": "OEKO-TEX® Standard 100 certified",
+            "badge_dot_color": "",
+            "content_heading": "<strong>&nbsp;For the moment the city goes quiet</strong>",
+            "content_heading_color": "",
+            "description": "Loungewear made for slow mornings and quiet nights in",
+            "description_color": "",
+            "button_text": "Shop The Lounge Edit",
+            "button_link": "shopify://collections/women-loungewear-and-pajamas"
+          }
+        }
+      },
+      "block_order": [
+        "collection_kCBYfw",
+        "collection_k4Q6NP"
+      ],
+      "name": "t:sections.collection-showcase.presets.name",
+      "settings": {
+        "enable_top_border": false,
+        "enable_bottom_border": false,
+        "border_style": "solid",
+        "subheading": "Edit 01",
+        "subheading_color": "#7a2e38",
+        "heading": "The Lounge Edit&nbsp;",
+        "highlight_text_color": "#000000",
+        "highlight_text_gradient": "linear-gradient(90deg, #A678C8 0%, #718CC7 48.08%, #639A47 100%)",
+        "highlight_font": "body",
+        "seo_heading": "h2",
+        "heading_size": "h2",
+        "description": "<p>Plush robes and silky satin pajama sets, made for slow mornings in the city.</p>",
+        "description_color": "#6e6e6e",
+        "enable_view_all_button": true,
+        "view_all_button_text": "View collection",
+        "button_size": "med",
+        "mobile_button_size": "m-med",
+        "show_collection_body": true,
+        "image_height": "square",
+        "image_radius_desktop": 0,
+        "image_radius_mobile": 0,
+        "content_seo_heading": "h3",
+        "content_heading_size": "h4",
+        "products_per_row": 4,
+        "products_count": 4,
+        "enable_swipe": true,
+        "mobile_products_visible": "2.5",
+        "product_grid_radius_desktop": 0,
+        "product_grid_radius_mobile": 0,
+        "product_grid_spacing_desktop": 4,
+        "product_grid_spacing_mobile": 4,
+        "bgcolor": "primary",
+        "section_visibility": "always",
+        "top_space_desktop": 40,
+        "bottom_space_desktop": 40,
+        "top_space_mobile": 20,
+        "bottom_space_mobile": 20
+      }
+    },
+    "gallery_carousel_HV6QL7": {
+      "type": "gallery-carousel",
+      "blocks": {
+        "image_hQQqQU": {
+          "type": "image",
+          "settings": {
+            "heading": "",
+            "subheading": "",
+            "image": "shopify://shop_images/Cosmopolitan_logo-_484x284_6703ea7b-4750-400d-ada3-c79b2d6024a9.jpg",
+            "link": ""
+          }
+        },
+        "image_tmAXx9": {
+          "type": "image",
+          "settings": {
+            "heading": "",
+            "subheading": "",
+            "image": "shopify://shop_images/Yahoo_Life_logo-_484x284_5d15309a-c20c-4d73-8504-0388e9fd07cb.jpg",
+            "link": ""
+          }
+        },
+        "image_zHiz9m": {
+          "type": "image",
+          "settings": {
+            "heading": "",
+            "subheading": "",
+            "image": "shopify://shop_images/Marie_Claire_logo-_484x284_4c93f8df-90d0-4b25-b37a-00beebbdee5c.jpg",
+            "link": ""
+          }
+        },
+        "image_RtYe7R": {
+          "type": "image",
+          "settings": {
+            "heading": "",
+            "subheading": "",
+            "image": "shopify://shop_images/People_logo-_484x284_030f31a7-6c59-4b39-8fe4-74a9504e74b6.png",
+            "link": ""
+          }
+        },
+        "image_7AX4Ue": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "heading": "",
+            "subheading": "",
+            "link": ""
+          }
+        },
+        "image_BNBRH4": {
+          "type": "image",
+          "settings": {
+            "heading": "",
+            "subheading": "",
+            "image": "shopify://shop_images/Glamour_logo-_484x284_9ab63601-5a00-43f6-bfba-b17f523e82a9.jpg",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_hQQqQU",
+        "image_tmAXx9",
+        "image_zHiz9m",
+        "image_RtYe7R",
+        "image_7AX4Ue",
+        "image_BNBRH4"
+      ],
+      "name": "t:sections.gallery-carousel.presets.name",
+      "settings": {
+        "enable_fullwidth": false,
+        "enable_top_border": true,
+        "enable_bottom_border": true,
+        "border_style": "solid",
+        "heading": "AS SEEN IN",
+        "highlight_text_color": "#000000",
+        "highlight_text_gradient": "linear-gradient(90deg, #A678C8 0%, #718CC7 48.08%, #639A47 100%)",
+        "highlight_font": "body",
+        "seo_heading": "h2",
+        "heading_size": "h5",
+        "gallery_style": "auto-slide",
+        "slide_direction": "right",
+        "image_style": "square",
+        "image_size": "xsmall",
+        "column_gap_desktop": 22,
+        "column_gap_mobile": 14,
+        "text_alignment": "center",
+        "enable_image_animation": true,
+        "image_crop": false,
+        "image_background": false,
+        "enable_swipe": true,
+        "bgcolor": "primary",
+        "section_visibility": "always",
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 0,
+        "top_space_mobile": 0,
+        "bottom_space_mobile": 0
+      }
+    },
+    "collection_showcase_mQkUWp": {
+      "type": "collection-showcase",
+      "blocks": {
+        "collection_WpgXgP": {
+          "type": "collection",
+          "settings": {
+            "collection": "mens-fall-essential",
+            "product_list": [
+              "ny-threads-mens-ribbed-turtleneck"
+            ],
+            "heading": "Men",
+            "collection_image": "shopify://shop_images/image_1_57d4d54a-d5f8-4a84-b852-3c9648b6b7be.jpg",
+            "subheading": "",
+            "subheading_color": "#b08a3e",
+            "badge_text": "OEKO-TEX® Standard 100 certified",
+            "badge_dot_color": "",
+            "content_heading": "<strong>Fall layers that feel like quiet confidence&nbsp;</strong>",
+            "content_heading_color": "",
+            "description": "Seasonal Essentials for days that start cold and end warm",
+            "description_color": "",
+            "button_text": "Shop Fall Essentials",
+            "button_link": ""
+          }
+        },
+        "collection_J3PRX7": {
+          "type": "collection",
+          "settings": {
+            "collection": "womens-fall-essentials",
+            "product_list": [
+              "ny-threads-womens-flannel-shirt-plaid-shacket"
+            ],
+            "heading": "Women",
+            "collection_image": "shopify://shop_images/Women_Everyday_Essentials_Collection_Banner-1.jpg",
+            "subheading": "",
+            "subheading_color": "#b08a3e",
+            "badge_text": "OEKO-TEX® Standard 100 certified",
+            "badge_dot_color": "",
+            "content_heading": "<strong>&nbsp;Fall layers that feel like quiet confidence &nbsp;</strong>",
+            "content_heading_color": "",
+            "description": "Seasonal Essentials for days that start cold and end warm",
+            "description_color": "",
+            "button_text": "Shop Fall Essentials",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_WpgXgP",
+        "collection_J3PRX7"
+      ],
+      "name": "t:sections.collection-showcase.presets.name",
+      "settings": {
+        "enable_top_border": false,
+        "enable_bottom_border": false,
+        "border_style": "solid",
+        "subheading": "Edit 02",
+        "subheading_color": "#7a2e38",
+        "heading": "Fall Essentials&nbsp;",
+        "highlight_text_color": "#000000",
+        "highlight_text_gradient": "linear-gradient(90deg, #A678C8 0%, #718CC7 48.08%, #639A47 100%)",
+        "highlight_font": "body",
+        "seo_heading": "h2",
+        "heading_size": "h2",
+        "description": "<p>Turtlenecks, puffer vests and flannels, the layers New York lives in from now on.</p>",
+        "description_color": "#6e6e6e",
+        "enable_view_all_button": true,
+        "view_all_button_text": "View collection",
+        "button_size": "med",
+        "mobile_button_size": "m-med",
+        "show_collection_body": true,
+        "image_height": "square",
+        "image_radius_desktop": 0,
+        "image_radius_mobile": 0,
+        "content_seo_heading": "h3",
+        "content_heading_size": "h4",
+        "products_per_row": 4,
+        "products_count": 4,
+        "enable_swipe": true,
+        "mobile_products_visible": "2.5",
+        "product_grid_radius_desktop": 0,
+        "product_grid_radius_mobile": 0,
+        "product_grid_spacing_desktop": 4,
+        "product_grid_spacing_mobile": 4,
+        "bgcolor": "primary",
+        "section_visibility": "always",
+        "top_space_desktop": 40,
+        "bottom_space_desktop": 40,
+        "top_space_mobile": 20,
+        "bottom_space_mobile": 20
+      }
+    },
+    "image_banner_CByfif": {
+      "type": "image-banner",
+      "name": "t:sections.image_banner.presets.name",
+      "settings": {
+        "enable_parallax": false,
+        "section_visibility": "always",
+        "image": "shopify://shop_images/Multipack_Banner-Option-2_56243da6-efb4-4c8b-a07c-303356b247cf.jpg",
+        "desktop_height": "350px",
+        "mobile_height": "250px",
+        "block_display": "categories",
+        "banner_title": "&nbsp;The Multipack Edit, up to 30% off&nbsp;",
+        "highlight_text_color": "#000000",
+        "highlight_text_gradient": "linear-gradient(90deg, #A678C8 0%, #718CC7 48.08%, #639A47 100%)",
+        "highlight_font": "body",
+        "seo_heading": "h2",
+        "desktop_title_size": 32,
+        "mobile_title_size": 26,
+        "banner_desc": "Stock up on your everyday favourites: more pieces, better value.",
+        "button_text": "Shop Bundles",
+        "button_link": "shopify://collections/multipacks-more-for-less",
+        "button_size": "small",
+        "mobile_button_size": "m-small",
+        "content_position": "center-left",
+        "title_color": "#ffffff",
+        "desc_color": "#ffffff",
+        "btn_bg": "#ffffff",
+        "btn_text": "#14263b",
+        "btn_border": "#000000",
+        "overlay_color": "",
+        "overlay_opacity": 50
+      }
+    },
+    "collection_showcase_7QM7Tb": {
+      "type": "collection-showcase",
+      "blocks": {
+        "collection_nVgryX": {
+          "type": "collection",
+          "settings": {
+            "collection": "men-workwear-uniforms",
+            "product_list": [],
+            "heading": "Men",
+            "collection_image": "shopify://shop_images/Men_Coverall_Collection_Banner-2.jpg",
+            "subheading": "",
+            "subheading_color": "#b08a3e",
+            "badge_text": "OEKO-TEX® Standard 100 certified",
+            "badge_dot_color": "",
+            "content_heading": "<strong>Workwear that keeps up with every shift</strong>",
+            "content_heading_color": "",
+            "description": "Uniforms for women and men, fitted to move with you through a 12-hour day",
+            "description_color": "",
+            "button_text": "Shop Workwear",
+            "button_link": ""
+          }
+        },
+        "collection_A9AjEk": {
+          "type": "collection",
+          "settings": {
+            "collection": "women-workwear-uniforms",
+            "product_list": [],
+            "heading": "Women",
+            "collection_image": "shopify://shop_images/image_31dbe577-91e0-4800-8f49-9ff3526bb3ab.jpg",
+            "subheading": "",
+            "subheading_color": "#b08a3e",
+            "badge_text": "OEKO-TEX® Standard 100 certified",
+            "badge_dot_color": "",
+            "content_heading": "<strong>&nbsp;Workwear that keeps up with every shift.&nbsp;</strong>",
+            "content_heading_color": "",
+            "description": "Uniforms for women and men, fitted to move with you through a 12-hour day",
+            "description_color": "",
+            "button_text": "Shop Workwear",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_nVgryX",
+        "collection_A9AjEk"
+      ],
+      "name": "t:sections.collection-showcase.presets.name",
+      "settings": {
+        "enable_top_border": false,
+        "enable_bottom_border": false,
+        "border_style": "solid",
+        "subheading": "Edit 03",
+        "subheading_color": "#7a2e38",
+        "heading": "&nbsp;Built to Work&nbsp;",
+        "highlight_text_color": "#000000",
+        "highlight_text_gradient": "linear-gradient(90deg, #A678C8 0%, #718CC7 48.08%, #639A47 100%)",
+        "highlight_font": "body",
+        "seo_heading": "h2",
+        "heading_size": "h2",
+        "description": "<p>Work pants, coveralls and scrubs that are tough where it counts and comfortable all shift.</p>",
+        "description_color": "#6e6e6e",
+        "enable_view_all_button": true,
+        "view_all_button_text": "View collection",
+        "button_size": "med",
+        "mobile_button_size": "m-med",
+        "show_collection_body": true,
+        "image_height": "square",
+        "image_radius_desktop": 0,
+        "image_radius_mobile": 0,
+        "content_seo_heading": "h3",
+        "content_heading_size": "h4",
+        "products_per_row": 4,
+        "products_count": 4,
+        "enable_swipe": true,
+        "mobile_products_visible": "2.5",
+        "product_grid_radius_desktop": 0,
+        "product_grid_radius_mobile": 0,
+        "product_grid_spacing_desktop": 4,
+        "product_grid_spacing_mobile": 4,
+        "bgcolor": "primary",
+        "section_visibility": "always",
+        "top_space_desktop": 40,
+        "bottom_space_desktop": 40,
+        "top_space_mobile": 20,
+        "bottom_space_mobile": 20
+      }
+    },
+    "spacer_JaVaLQ": {
+      "type": "spacer",
+      "name": "t:sections.spacer.presets.name",
+      "settings": {
+        "height_desktop": 2,
+        "height_mobile": 1,
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 0,
+        "top_space_mobile": 0,
+        "bottom_space_mobile": 0,
+        "bgcolor": "secondary",
+        "custom_color": "",
+        "line_color": ""
+      }
+    },
+    "collection_showcase_qFdBLU": {
+      "type": "collection-showcase",
+      "blocks": {
+        "collection_Vxa8g4": {
+          "type": "collection",
+          "settings": {
+            "collection": "best-sellers",
+            "product_list": [],
+            "heading": "Men",
+            "subheading": "Fabric Technology",
+            "subheading_color": "#b08a3e",
+            "badge_text": "Empire Soft™ — brushed modal-blend knit",
+            "badge_dot_color": "",
+            "content_heading": "Built to feel like nothing at all.",
+            "content_heading_color": "",
+            "description": "A short description of what makes this collection special.",
+            "description_color": "",
+            "button_text": "Learn more",
+            "button_link": ""
+          }
+        },
+        "collection_PQmyTb": {
+          "type": "collection",
+          "settings": {
+            "collection": "all",
+            "product_list": [],
+            "heading": "Women",
+            "subheading": "Fabric Technology",
+            "subheading_color": "#b08a3e",
+            "badge_text": "Empire Soft™ — brushed modal-blend knit",
+            "badge_dot_color": "",
+            "content_heading": "Built to feel like nothing at all.",
+            "content_heading_color": "",
+            "description": "A short description of what makes this collection special.",
+            "description_color": "",
+            "button_text": "Learn more",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_Vxa8g4",
+        "collection_PQmyTb"
+      ],
+      "disabled": true,
+      "name": "t:sections.collection-showcase.presets.name",
+      "settings": {
+        "enable_top_border": false,
+        "enable_bottom_border": false,
+        "border_style": "solid",
+        "subheading": "Collection No.01",
+        "subheading_color": "#7a2e38",
+        "heading": "The Collection Name",
+        "highlight_text_color": "#000000",
+        "highlight_text_gradient": "linear-gradient(90deg, #A678C8 0%, #718CC7 48.08%, #639A47 100%)",
+        "highlight_font": "body",
+        "seo_heading": "h2",
+        "heading_size": "h2",
+        "description": "<p>Add a short description about this collection here.</p>",
+        "description_color": "#6e6e6e",
+        "enable_view_all_button": true,
+        "view_all_button_text": "View collection",
+        "button_size": "med",
+        "mobile_button_size": "m-med",
+        "show_collection_body": false,
+        "image_height": "square",
+        "image_radius_desktop": 0,
+        "image_radius_mobile": 0,
+        "content_seo_heading": "h3",
+        "content_heading_size": "h4",
+        "products_per_row": 4,
+        "products_count": 4,
+        "enable_swipe": true,
+        "mobile_products_visible": "2.5",
+        "product_grid_radius_desktop": 0,
+        "product_grid_radius_mobile": 0,
+        "product_grid_spacing_desktop": 4,
+        "product_grid_spacing_mobile": 4,
+        "bgcolor": "primary",
+        "section_visibility": "always",
+        "top_space_desktop": 40,
+        "bottom_space_desktop": 40,
+        "top_space_mobile": 20,
+        "bottom_space_mobile": 20
+      }
+    },
+    "spacer_QHhEtY": {
+      "type": "spacer",
+      "disabled": true,
+      "name": "t:sections.spacer.presets.name",
+      "settings": {
+        "height_desktop": 0,
+        "height_mobile": 0,
+        "top_space_desktop": 25,
+        "bottom_space_desktop": 25,
+        "top_space_mobile": 15,
+        "bottom_space_mobile": 15,
+        "bgcolor": "secondary",
+        "custom_color": "",
+        "line_color": ""
+      }
+    },
+    "testimonials_J3taRL": {
+      "type": "testimonials",
+      "blocks": {
+        "quote_YiLMPn": {
+          "type": "quote",
+          "settings": {
+            "rating": 5,
+            "message": "I really like this cotton shirt set. My friend has been using the shirts for painting work and says they are very good and comfortable, especially when working for several hours.",
+            "author": "Dayane",
+            "author_city": "United States",
+            "review_date": "August 29, 2026",
+            "show_verified_badge": true,
+            "verified_label": "Verified buyer",
+            "video_text": ""
+          }
+        },
+        "quote_JiNFeJ": {
+          "type": "quote",
+          "settings": {
+            "rating": 5,
+            "message": "I picked up this bathrobe and it’s exactly what I wanted: soft, warm, and surprisingly put-together for something meant to be comfortable.",
+            "author": "Mark Nicole",
+            "author_city": "United States",
+            "review_date": "January 31, 2026",
+            "show_verified_badge": true,
+            "verified_label": "Verified buyer",
+            "video_text": ""
+          }
+        },
+        "quote_JXgcbq": {
+          "type": "quote",
+          "settings": {
+            "rating": 4,
+            "message": "A comfortable 5-pack of short-sleeve crewneck undershirts designed for daily casual wear or layered undershirt use. The classic regular fit drapes comfortably",
+            "author": "Nicole",
+            "author_city": "United States",
+            "review_date": "September 30, 2026",
+            "show_verified_badge": true,
+            "verified_label": "Verified buyer",
+            "video_text": ""
+          }
+        },
+        "quote_fn89Lk": {
+          "type": "quote",
+          "settings": {
+            "rating": 4,
+            "message": "They ended up being a solid buy. They're lightweight, comfortable, and breathable whether I'm working out, taking a walk, or just wearing them around the house",
+            "author": "Nathan",
+            "author_city": "United States",
+            "review_date": "July 22, 2026",
+            "show_verified_badge": true,
+            "verified_label": "Verified buyer",
+            "video_text": ""
+          }
+        },
+        "quote_PzrJeY": {
+          "type": "quote",
+          "settings": {
+            "rating": 4,
+            "message": "Really happy with these shorts. They’re comfortable, have a nice athletic look, and are stylish enough to wear casually as well.",
+            "author": "Jonathan E.",
+            "author_city": "United States",
+            "review_date": "September 18, 2026",
+            "show_verified_badge": true,
+            "verified_label": "Verified buyer",
+            "video_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "quote_YiLMPn",
+        "quote_JiNFeJ",
+        "quote_JXgcbq",
+        "quote_fn89Lk",
+        "quote_PzrJeY"
+      ],
+      "name": "t:sections.testimonials.presets.name",
+      "settings": {
+        "subheading": "Why they love us",
+        "subheading_color": "#7a2e38",
+        "heading": "Thousands of verified reviews.",
+        "highlight_text_color": "#000000",
+        "highlight_text_gradient": "linear-gradient(90deg, #A678C8 0%, #718CC7 48.08%, #639A47 100%)",
+        "highlight_font": "body",
+        "seo_heading": "h2",
+        "heading_size": "h4",
+        "description": "",
+        "description_size": "text",
+        "alignment": "left",
+        "slider_style": "style4",
+        "card_bgcolor": "#f7f7f5",
+        "card_text_color": "#16181c",
+        "card_star_color": "#c99a3f",
+        "card_badge_color": "#a4813f",
+        "column_count": "column3",
+        "nav_style": "dots",
+        "arrow_position": "top",
+        "text_size": "text-medium",
+        "text_alignment": "center",
+        "divider_top": false,
+        "divider_bottom": false,
+        "bgcolor": "primary",
+        "section_visibility": "always",
+        "top_space_desktop": 60,
+        "bottom_space_desktop": 0,
+        "top_space_mobile": 30,
+        "bottom_space_mobile": 0
+      }
+    },
+    "collection_showcase_eEmWik": {
+      "type": "collection-showcase",
+      "blocks": {
+        "collection_crzAgx": {
+          "type": "collection",
+          "settings": {
+            "collection": "all",
+            "product_list": [],
+            "heading": "Women",
+            "subheading": "Fabric Technology",
+            "subheading_color": "#b08a3e",
+            "badge_text": "Empire Soft™ — brushed modal-blend knit",
+            "badge_dot_color": "",
+            "content_heading": "Built to feel like nothing at all.",
+            "content_heading_color": "",
+            "description": "A short description of what makes this collection special.",
+            "description_color": "",
+            "button_text": "Learn more",
+            "button_link": ""
+          }
+        },
+        "collection_hdNny9": {
+          "type": "collection",
+          "settings": {
+            "collection": "best-sellers",
+            "product_list": [],
+            "heading": "Men",
+            "subheading": "Fabric Technology",
+            "subheading_color": "#b08a3e",
+            "badge_text": "Empire Soft™ — brushed modal-blend knit",
+            "badge_dot_color": "",
+            "content_heading": "Built to feel like nothing at all.",
+            "content_heading_color": "",
+            "description": "A short description of what makes this collection special.",
+            "description_color": "",
+            "button_text": "Learn more",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_crzAgx",
+        "collection_hdNny9"
+      ],
+      "disabled": true,
+      "name": "t:sections.collection-showcase.presets.name",
+      "settings": {
+        "enable_top_border": false,
+        "enable_bottom_border": false,
+        "border_style": "solid",
+        "subheading": "Collection No.03",
+        "subheading_color": "#7a2e38",
+        "heading": "Garment District Collection",
+        "highlight_text_color": "#000000",
+        "highlight_text_gradient": "linear-gradient(90deg, #A678C8 0%, #718CC7 48.08%, #639A47 100%)",
+        "highlight_font": "body",
+        "seo_heading": "h2",
+        "heading_size": "h2",
+        "description": "<p>Scrubs, coats and workwear — named for the neighborhood that built New York's apparel industry.</p>",
+        "description_color": "#6e6e6e",
+        "enable_view_all_button": true,
+        "view_all_button_text": "View collection",
+        "button_size": "med",
+        "mobile_button_size": "m-med",
+        "show_collection_body": false,
+        "image_height": "square",
+        "image_radius_desktop": 0,
+        "image_radius_mobile": 0,
+        "content_seo_heading": "h3",
+        "content_heading_size": "h4",
+        "products_per_row": 5,
+        "products_count": 5,
+        "enable_swipe": true,
+        "mobile_products_visible": "2.5",
+        "product_grid_radius_desktop": 0,
+        "product_grid_radius_mobile": 0,
+        "product_grid_spacing_desktop": 4,
+        "product_grid_spacing_mobile": 4,
+        "bgcolor": "primary",
+        "section_visibility": "always",
+        "top_space_desktop": 40,
+        "bottom_space_desktop": 40,
+        "top_space_mobile": 20,
+        "bottom_space_mobile": 20
+      }
+    }
+  },
+  "order": [
+    "slider_wgBHc9",
+    "collection_showcase_9cwKtF",
+    "gallery_carousel_HV6QL7",
+    "collection_showcase_mQkUWp",
+    "image_banner_CByfif",
+    "collection_showcase_7QM7Tb",
+    "spacer_JaVaLQ",
+    "collection_showcase_qFdBLU",
+    "spacer_QHhEtY",
+    "testimonials_J3taRL",
+    "collection_showcase_eEmWik"
+  ]
+}

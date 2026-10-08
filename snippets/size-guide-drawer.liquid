@@ -1,0 +1,304 @@
+{% comment %}
+  Size guide content (Fit Guide + Size Guide tabs), shown in the shared side drawer
+  (snippets/side-drawer.liquid) by assets/size-guide.js.
+  - Fit Guide content comes from the variant block settings.
+  - Size Guide tables come from JSON product metafields:
+      product.metafields.custom.size_guide_cm  /  product.metafields.custom.size_guide_inches
+    Format: { "headers": ["cm", "79-82", ...], "rows": [["63-67", "XXS", ...], ...] }
+  Renders nothing when neither tab has content.
+
+  Accepts:
+  - block: variant block
+  - product: product object
+  - section: section object
+{% endcomment %}
+{%- liquid
+  assign sg = block.settings
+
+  assign table_cm = product.metafields.custom.size_guide_cm.value
+  assign table_in = product.metafields.custom.size_guide_inches.value
+
+  assign has_cm = false
+  if table_cm.rows.size > 0
+    assign has_cm = true
+  endif
+  assign has_in = false
+  if table_in.rows.size > 0
+    assign has_in = true
+  endif
+
+  assign has_size = false
+  if has_cm or has_in
+    assign has_size = true
+  endif
+
+  assign has_media = false
+  if sg.fit_video != blank or sg.fit_video_url != blank or sg.fit_image != blank
+    assign has_media = true
+  endif
+
+  assign has_steps = false
+  assign has_support = false
+  for i in (1..3)
+    assign k_img = 'step_' | append: i | append: '_image'
+    assign k_head = 'step_' | append: i | append: '_heading'
+    assign k_text = 'step_' | append: i | append: '_text'
+    if sg[k_img] != blank or sg[k_head] != blank or sg[k_text] != blank
+      assign has_steps = true
+    endif
+    assign k_img = 'support_' | append: i | append: '_image'
+    assign k_head = 'support_' | append: i | append: '_heading'
+    assign k_text = 'support_' | append: i | append: '_text'
+    if sg[k_img] != blank or sg[k_head] != blank or sg[k_text] != blank
+      assign has_support = true
+    endif
+  endfor
+
+  assign has_fit = false
+  if has_media or has_steps or has_support
+    assign has_fit = true
+  endif
+
+  assign default_unit = 'cm'
+  unless has_cm
+    assign default_unit = 'in'
+  endunless
+
+  assign drawer_id = 'SizeGuide-' | append: section.id
+-%}
+{%- if has_fit or has_size -%}
+  {{ 'size-guide.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'size-guide.js' | asset_url }}" defer></script>
+
+  <template
+    id="{{ drawer_id }}"
+    data-size-guide-template
+    data-title="{{ sg.size_guide_title | default: 'Size Guide' | escape }}"
+  >
+    <div class="size-guide-body">
+      {%- if has_fit and has_size -%}
+        <div class="size-guide-tabs" role="tablist">
+          <button
+            type="button"
+            class="size-guide-tab active"
+            role="tab"
+            aria-selected="true"
+            aria-controls="{{ drawer_id }}-fit"
+            data-size-guide-tab="fit"
+          >
+            {{- sg.fit_tab_label | default: 'Fit Guide' -}}
+          </button>
+          <button
+            type="button"
+            class="size-guide-tab"
+            role="tab"
+            aria-selected="false"
+            aria-controls="{{ drawer_id }}-size"
+            data-size-guide-tab="size"
+          >
+            {{- sg.size_tab_label | default: 'Size Guide' -}}
+          </button>
+        </div>
+      {%- endif -%}
+
+      {%- if has_fit -%}
+        <div class="size-guide-panel active" id="{{ drawer_id }}-fit" role="tabpanel" data-size-guide-panel="fit">
+          {%- if has_media or has_steps -%}
+            <div class="size-guide-block">
+              {%- if sg.fit_heading != blank -%}
+                <h3 class="size-guide-heading">{{ sg.fit_heading }}</h3>
+              {%- endif -%}
+
+              {%- if has_media -%}
+                <div class="size-guide-media">
+                  {%- if sg.fit_video != blank -%}
+                    {{
+                      sg.fit_video
+                      | video_tag:
+                        image_size: '1100x',
+                        autoplay: true,
+                        muted: true,
+                        loop: true,
+                        playsinline: true,
+                        controls: false
+                    }}
+                  {%- elsif sg.fit_video_url != blank -%}
+                    {%- liquid
+                      if sg.fit_video_url.type == 'youtube'
+                        assign embed_src = 'https://www.youtube.com/embed/' | append: sg.fit_video_url.id | append: '?autoplay=1&mute=1&loop=1&controls=0&rel=0&playsinline=1&modestbranding=1&playlist=' | append: sg.fit_video_url.id
+                      else
+                        assign embed_src = 'https://player.vimeo.com/video/' | append: sg.fit_video_url.id | append: '?background=1&autoplay=1&muted=1&loop=1&playsinline=1'
+                      endif
+                    -%}
+                    <iframe
+                      data-src="{{ embed_src }}"
+                      title="{{ sg.fit_heading | escape }}"
+                      allow="autoplay; encrypted-media; picture-in-picture"
+                      allowfullscreen
+                      data-size-guide-iframe
+                    ></iframe>
+                  {%- else -%}
+                    {{
+                      sg.fit_image
+                      | image_url: width: 1100
+                      | image_tag: loading: 'lazy', widths: '550, 800, 1100', sizes: '(min-width: 576px) 510px, 100vw'
+                    }}
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+
+              {%- if has_steps -%}
+                <ul class="size-guide-steps list-unstyled">
+                  {%- for i in (1..3) -%}
+                    {%- liquid
+                      assign k_img = 'step_' | append: i | append: '_image'
+                      assign k_head = 'step_' | append: i | append: '_heading'
+                      assign k_text = 'step_' | append: i | append: '_text'
+                    -%}
+                    {%- if sg[k_img] != blank or sg[k_head] != blank or sg[k_text] != blank -%}
+                      <li class="size-guide-step{% if sg[k_img] == blank %} no-image{% endif %}">
+                        {%- if sg[k_img] != blank -%}
+                          <div class="size-guide-step-image">
+                            {{
+                              sg[k_img]
+                              | image_url: width: 300
+                              | image_tag: loading: 'lazy', widths: '100, 200, 300', sizes: '100px'
+                            }}
+                          </div>
+                        {%- endif -%}
+                        <div class="size-guide-step-text">
+                          {%- if sg[k_head] != blank -%}
+                            <h4 class="size-guide-subheading">{{ sg[k_head] }}</h4>
+                          {%- endif -%}
+                          {%- if sg[k_text] != blank -%}
+                            <p>{{ sg[k_text] | newline_to_br }}</p>
+                          {%- endif -%}
+                        </div>
+                      </li>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+
+          {%- if has_support -%}
+            {%- if has_media or has_steps -%}
+              <hr class="size-guide-divider">
+            {%- endif -%}
+            <div class="size-guide-block">
+              {%- if sg.support_heading != blank -%}
+                <h3 class="size-guide-heading">{{ sg.support_heading }}</h3>
+              {%- endif -%}
+              <ul class="size-guide-support list-unstyled">
+                {%- for i in (1..3) -%}
+                  {%- liquid
+                    assign k_img = 'support_' | append: i | append: '_image'
+                    assign k_head = 'support_' | append: i | append: '_heading'
+                    assign k_text = 'support_' | append: i | append: '_text'
+                  -%}
+                  {%- if sg[k_img] != blank or sg[k_head] != blank or sg[k_text] != blank -%}
+                    <li class="size-guide-support-item{% if sg[k_img] == blank %} no-image{% endif %}">
+                      {%- if sg[k_img] != blank -%}
+                        <div class="size-guide-support-image">
+                          {{
+                            sg[k_img]
+                            | image_url: width: 500
+                            | image_tag: loading: 'lazy', widths: '250, 400, 500', sizes: '200px'
+                          }}
+                        </div>
+                      {%- endif -%}
+                      <div class="size-guide-support-text">
+                        {%- if sg[k_head] != blank -%}
+                          <h4 class="size-guide-subheading">{{ sg[k_head] }}</h4>
+                        {%- endif -%}
+                        {%- if sg[k_text] != blank -%}
+                          <p>{{ sg[k_text] | newline_to_br }}</p>
+                        {%- endif -%}
+                      </div>
+                    </li>
+                  {%- endif -%}
+                {%- endfor -%}
+              </ul>
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      {%- if has_size -%}
+        <div
+          class="size-guide-panel{% unless has_fit %} active{% endunless %}"
+          id="{{ drawer_id }}-size"
+          role="tabpanel"
+          data-size-guide-panel="size"
+        >
+          {%- if has_cm and has_in -%}
+            <div class="size-guide-units" role="group" aria-label="Units">
+              <button
+                type="button"
+                class="size-guide-unit{% if default_unit == 'in' %} active{% endif %}"
+                aria-pressed="{% if default_unit == 'in' %}true{% else %}false{% endif %}"
+                data-size-guide-unit="in"
+              >
+                in
+              </button>
+              <button
+                type="button"
+                class="size-guide-unit{% if default_unit == 'cm' %} active{% endif %}"
+                aria-pressed="{% if default_unit == 'cm' %}true{% else %}false{% endif %}"
+                data-size-guide-unit="cm"
+              >
+                cm
+              </button>
+            </div>
+          {%- endif -%}
+
+          {%- for unit in (1..2) -%}
+            {%- liquid
+              if unit == 1
+                assign unit_key = 'in'
+                assign table = table_in
+                assign show_table = has_in
+              else
+                assign unit_key = 'cm'
+                assign table = table_cm
+                assign show_table = has_cm
+              endif
+            -%}
+            {%- if show_table -%}
+              <div
+                class="size-guide-table-wrap{% if default_unit == unit_key %} active{% endif %}"
+                data-size-guide-table="{{ unit_key }}"
+              >
+                <table class="size-guide-table">
+                  {%- if table.headers.size > 0 -%}
+                    <thead>
+                      <tr>
+                        {%- for cell in table.headers -%}
+                          <th scope="col">{{ cell }}</th>
+                        {%- endfor -%}
+                      </tr>
+                    </thead>
+                  {%- endif -%}
+                  <tbody>
+                    {%- for row in table.rows -%}
+                      <tr>
+                        {%- for cell in row -%}
+                          {%- if forloop.first -%}
+                            <th scope="row">{{ cell }}</th>
+                          {%- else -%}
+                            <td>{{ cell }}</td>
+                          {%- endif -%}
+                        {%- endfor -%}
+                      </tr>
+                    {%- endfor -%}
+                  </tbody>
+                </table>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </template>
+{%- endif -%}

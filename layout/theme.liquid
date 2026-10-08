@@ -1,0 +1,235 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+<style>
+@media screen and (min-width: 990px) {
+
+  /* ===== MAIN PANEL: thin divider on the right ===== */
+  .top-header .menu-center > li:hover > .yv-dropdown-detail > .yv-dropdown-menus-outer {
+    box-sizing: border-box !important;
+    box-shadow: inset -1px 0 0 #e5e5e5 !important;
+  }
+
+  /* inner white box fills the panel exactly (this is what made it ~460px wide) */
+  .top-header .yv-dropdown-menus-outer > .yv-dropdown-menus {
+    position: static !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding-left: 16px !important;
+    padding-right: 0 !important;
+    border: 0 !important;
+  }
+
+  /* list and rows run the full panel width, so there's no gap before the flyout */
+  .top-header .yv-dropdown-menus > .menu-type-dropdown-list,
+  .top-header .menu-type-dropdown-list > .dropdown-inner-menu-item {
+    position: static !important;
+    width: 100% !important;
+  }
+
+  /* row link: text on the left, arrow lined up at the right edge */
+  .top-header .menu-type-dropdown-list > .dropdown-inner-menu-item > .menu-category-title {
+    display: grid !important;
+    grid-template-columns: 1fr auto !important;
+    align-items: center !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding-right: 32px !important;
+  }
+
+  /* text: regular weight, 16px */
+  .top-header .yv-dropdown-menus-outer a,
+  .top-header .yv-dropdown-menus-outer a span {
+    font-size: 16px !important;
+    font-weight: 400 !important;
+  }
+
+  /* hovered row stays black, with an underline like Gymshark */
+  .top-header .dropdown-inner-menu-item:hover > .menu-category-title {
+    color: #000000 !important;
+    opacity: 1 !important;
+  }
+  .top-header .dropdown-inner-menu-item:hover > .menu-category-title span {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 10px;
+  }
+
+  /* ===== FLYOUT: full-height column starting at the panel's right edge ===== */
+  .top-header .dropdown-inner-menu-item > .menu-type-dropdown-inner {
+    position: absolute !important;
+    top: 0 !important;
+    left: 100% !important;
+    right: auto !important;
+    width: 375px !important;
+    height: 100% !important;
+    box-sizing: border-box !important;
+    padding: 32px !important;
+    background: #ffffff !important;
+    border-left: 1px solid #e5e5e5 !important;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+
+  /* ===== PROMO IMAGE under the list (image only, no text) ===== */
+  .top-header .menu-center > li:hover > .yv-dropdown-detail > .yv-dropdown-menus-outer::after {
+    content: "";
+    position: absolute;
+    top: 310px;
+    left: 8px;
+    right: 8px;
+    height: 240px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  /* Men */
+  .top-header .menu-center > li:nth-child(1):hover > .yv-dropdown-detail > .yv-dropdown-menus-outer::after {
+    background-image: url("https://www.nythreads.com/cdn/shop/files/Atheltic_Shorts-Black-1.jpg?width=800");
+  }
+
+  /* Women */
+  .top-header .menu-center > li:nth-child(2):hover > .yv-dropdown-detail > .yv-dropdown-menus-outer::after {
+    background-image: url("https://cdn.shopify.com/s/files/1/0804/4740/6336/files/women_menu_image.jpg?v=1791468603");
+  }
+
+  /* More for Less */
+  .top-header .menu-center > li:nth-child(3):hover > .yv-dropdown-detail > .yv-dropdown-menus-outer::after {
+    background-image: url("https://cdn.shopify.com/s/files/1/0804/4740/6336/files/more_for_less_menu_image.jpg?v=1791468604");
+  }
+
+  /* Explore */
+  .top-header .menu-center > li:nth-child(4):hover > .yv-dropdown-detail > .yv-dropdown-menus-outer::after {
+    background-image: url("https://www.nythreads.com/cdn/shop/files/Reference-2_Revised-_High_res_-_Mobile.jpg?width=800");
+  }
+    /* keep every menu item on one line */
+  .top-header .yv-dropdown-menus-outer .menu-category-title span,
+  .top-header .yv-dropdown-menus-outer a {
+    white-space: nowrap !important;
+  }
+    /* rows run the full panel width, so each row ends exactly where its flyout begins */
+  .top-header .yv-dropdown-menus-outer > .yv-dropdown-menus,
+  .top-header .yv-dropdown-menus > .menu-type-dropdown-list,
+  .top-header .menu-type-dropdown-list > .dropdown-inner-menu-item,
+  .top-header .menu-type-dropdown-list > .dropdown-inner-menu-item > .menu-category-title {
+    width: 100% !important;
+    max-width: none !important;
+    overflow: visible !important;
+  }
+}
+</style>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    {%- render 'meta-tags' -%}
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+      <link rel="shortcut-icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+
+    {%- unless settings.type_heading_font_family.system? and settings.type_base_font_family.system? -%}
+      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+    {%- endunless -%}
+    <title>{{ page_title }}</title>
+    {%- if page_description -%}
+      <meta name="description" content="{{ page_description | escape }}">
+    {%- endif -%}
+    {{ content_for_header }}
+    <script>
+      document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+    </script>
+
+    {%- render 'theme-style' -%}
+    {%- render 'theme-scripts' -%}
+  </head>
+  <body
+    class="template_{{ template | handle }} page-loading breadcrumb-{{ settings.enable_breadcrumb }} theme-layout-{{ settings.layout_style }} navigation-arrows-{{ settings.arrow_style }}{% if settings.buttonAnimation == 'animated-arrow'%} button-style-arrow-animated{% endif %}"
+    style="--layoutRadius:{% if settings.layout_style == 'rounded' %}10px{% else %}0px{% endif %};"
+  >
+    <a class="skip-to-content-link button yv-visually-hidden focus-inside" href="#MainContent">
+      {{ 'accessibility.skip_to_text' | t }}
+    </a>
+    <div class="body-wrapper">
+      <div class="wrapper">
+        {% sections 'header-group' %}
+        {%- if settings.enable_breadcrumb_product and request.page_type == 'product' -%}
+          {%- render 'breadcrumb' -%}
+        {%- endif -%}
+        <main id="MainContent" class="content-for-layout focus-none">
+          {{ content_for_layout }}
+        </main>
+        {% sections 'footer-group' %}
+        {%- liquid 
+          section 'store-locator'
+          render 'search-drawer' 
+          section 'newsletter-sidebar-popup'
+          render 'side-drawer'
+        -%}
+        <ul class="list-unstyled" hidden>
+          <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
+        </ul>
+      </div>
+      {%- liquid
+        render 'newsletter-popup'
+        render 'cookie-banner'
+        render 'age-verification-popup'
+        if settings.enableScrollToTop
+          render 'scroll-top'
+        endif
+        render 'similar-product-drawer'
+        render 'quick-add-popup'
+        section 'side-drawer-content'
+      -%}
+      {% sections 'overlay-group' %}
+    </div>
+    {%- if settings.enable_cart_drawer -%}
+      <div
+        id="mini_cart_shipping"
+        {% if settings.enable_shipping and settings.shipping_rate != blank %}
+          data-shipping="{{ settings.shipping_rate | times: 100 }}" data-shipText="{{ settings.shipping_text }}"
+        {% endif %}
+      >
+        {% if settings.enable_shipping and settings.shipping_rate != blank %}
+          <select id="shippingcountries" class="hidden" disabled>
+            {{ country_option_tags }}
+          </select>
+        {% endif %}
+      </div>
+    {%- endif -%}
+    {%- if request.page_type contains 'customers' -%}
+      <div class="yv-reorder-popup">
+        <div class="yv-reorder-popup-Container">
+          <div class="yv-reorder-popup-body"></div>
+        </div>
+      </div>
+    {% endif %}
+    {% unless settings.atc_alert == 'none' %}
+      <audio id="addToCartAlert">
+        
+        <source src="{{ settings.atc_alert | append: '.mp3' | asset_url }}" type="audio/mpeg">
+      </audio>
+    {% endunless %}
+    {% if settings.enable_stickers %}
+      <div class="fixed-overlay"></div>
+    {% endif %}
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        {% if settings.enable_animation %}
+        AOS.init({
+          easing: 'ease',
+          once: true,
+          duration: 500,
+          offset: 25,
+        });
+      {% endif %}
+      new universalParallax().init({
+        speed:10
+      });
+      });
+    </script>   
+  </body>
+</html>

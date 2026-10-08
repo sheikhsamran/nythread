@@ -1,0 +1,32 @@
+{%- comment -%}
+  Shopify-hosted background video for a slider slide.
+  Loaded via deferred-media, so a video hidden at the current breakpoint is never fetched.
+
+  Accepts:
+  - video: {Object} video setting
+  - class: {String} visibility classes (e.g. 'd-none d-md-block')
+{%- endcomment -%}
+<div class="yv-slider-video {{ class }}">
+  <deferred-media>
+    {%- if video.preview_image != blank -%}
+      {{
+        video.preview_image
+        | image_url: width: 1920
+        | image_tag: loading: 'eager', alt: video.alt, class: 'yv-slider-video-poster'
+      }}
+    {%- endif -%}
+    <template style="display:none">
+      {{
+        video
+        | video_tag:
+          autoplay: true,
+          loop: true,
+          muted: true,
+          playsinline: true,
+          controls: false,
+          image_size: '1920x',
+          class: 'videoBackgroundFile'
+      }}
+    </template>
+  </deferred-media>
+</div>

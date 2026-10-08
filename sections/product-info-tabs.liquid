@@ -1,0 +1,312 @@
+{{ 'product-info-tabs.css' | asset_url | stylesheet_tag }}
+{% render 'section-id-clipboard' %}
+{% liquid
+  # Designed For: product metafield custom.designed_for -> "designed" metaobject
+  assign designed_for = product.metafields.custom.designed_for.value
+  assign designed_for_features = designed_for.features_list.value | default: empty
+
+  assign show_designed_for = false
+  if designed_for != blank
+    if designed_for.heading != blank or designed_for.video != blank or designed_for_features.size > 0
+      assign show_designed_for = true
+    endif
+  endif
+
+  assign show_description = false
+  if section.settings.description_content != blank
+    assign show_description = true
+  endif
+
+  # Features: product metafield custom.features -> list of "features" metaobjects
+  assign feature_cards = product.metafields.custom.features.value | default: empty
+
+  assign show_features = false
+  if feature_cards.size > 0
+    assign show_features = true
+  endif
+%}
+{% if show_designed_for or show_description or show_features %}
+<div class="pit-section" id="product-info-tabs" data-section-id="{{ section.id }}">
+  <div class="container">
+    <div class="pit-tabs" role="tablist">
+      {% if show_designed_for %}
+        <button type="button" class="pit-tab-btn active" data-tab="designed-for" role="tab" aria-selected="true">{{ section.settings.tab_label_designed_for }}</button>
+      {% endif %}
+      {% if show_description %}
+        <button type="button" class="pit-tab-btn{% unless show_designed_for %} active{% endunless %}" data-tab="description" role="tab" aria-selected="{% if show_designed_for %}false{% else %}true{% endif %}">{{ section.settings.tab_label_description }}</button>
+      {% endif %}
+      {% if show_features %}
+        <button type="button" class="pit-tab-btn{% unless show_designed_for or show_description %} active{% endunless %}" data-tab="features" role="tab" aria-selected="{% if show_designed_for or show_description %}false{% else %}true{% endif %}">{{ section.settings.tab_label_features }}</button>
+      {% endif %}
+    </div>
+
+    <div class="pit-panels">
+      {% if show_designed_for %}
+        <div class="pit-panel active" data-panel="designed-for" role="tabpanel">
+          <div class="pit-designed-for">
+            <div class="pit-designed-for-content">
+              {% if designed_for.heading != blank %}
+                <div class="pit-designed-for-copy"><p>{{ designed_for.heading.value | escape }}</p></div>
+              {% endif %}
+              {% if designed_for_features.size > 0 %}
+                <div class="pit-feature-list">
+                  {% for feature in designed_for_features %}
+                    <div class="pit-feature-item">
+                      {% if feature.icon != blank %}
+                        <div class="pit-feature-icon">
+                          <img src="{{ feature.icon.value | image_url: width: 64 }}" width="32" height="32" loading="lazy" alt="">
+                        </div>
+                      {% endif %}
+                      <div class="pit-feature-text">
+                        {% if feature.heading != blank %}
+                          <h3>{{ feature.heading.value | escape }}</h3>
+                        {% endif %}
+                        {% if feature.description != blank %}
+                          <p>{{ feature.description.value | escape | newline_to_br }}</p>
+                        {% endif %}
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+            {% if designed_for.video != blank %}
+              <div class="pit-designed-for-media">
+                <div class="pit-media-wrapper" data-video>
+                  {{ designed_for.video.value | video_tag: image_size: '1200x', class: 'videoBackgroundFile', autoplay: true, loop: true, muted: true, controls: false, playsinline: true }}
+                  <button type="button" class="pit-video-toggle" aria-label="Pause video">
+                    {% render 'product-info-tabs-icon', icon: 'pause' %}
+                  </button>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+
+      {% if show_description %}
+        <div class="pit-panel{% unless show_designed_for %} active{% endunless %}" data-panel="description" role="tabpanel">
+          <div class="pit-description rte">{{ section.settings.description_content }}</div>
+          {% if section.settings.show_size_guide_prompt %}
+            <p class="pit-size-guide-prompt">
+              {{ section.settings.size_guide_text }}
+              <a href="{{ section.settings.size_guide_url | default: '#size-guide' }}">{{ section.settings.size_guide_link_label }}</a>
+            </p>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {% if show_features %}
+        <div class="pit-panel{% unless show_designed_for or show_description %} active{% endunless %}" data-panel="features" role="tabpanel">
+          <div class="pit-features-carousel" data-flickity-pit-carousel='{"pageDots": false, "prevNextButtons": false, "cellAlign": "left", "contain": true, "wrapAround": false}'>
+            {% for card in feature_cards %}
+              <div class="pit-feature-card">
+                <div class="pit-feature-card-media">
+                  {% if card.video != blank %}
+                    <div class="pit-media-wrapper" data-video>
+                      {{ card.video.value | video_tag: image_size: '800x', class: 'videoBackgroundFile', autoplay: true, loop: true, muted: true, controls: false, playsinline: true }}
+                      <button type="button" class="pit-video-toggle" aria-label="Pause video">
+                        {% render 'product-info-tabs-icon', icon: 'pause' %}
+                      </button>
+                    </div>
+                  {% elsif card.image != blank %}
+                    <div class="pit-media-wrapper">
+                      {% render 'lazy-image', image: card.image.value %}
+                    </div>
+                  {% else %}
+                    <div class="pit-media-wrapper pit-media-placeholder">
+                      {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                    </div>
+                  {% endif %}
+                </div>
+                <div class="pit-feature-card-content">
+                  <div class="pit-feature-card-text">
+                    {% if card.heading != blank %}
+                      <h3>{{ card.heading.value | escape }}</h3>
+                    {% endif %}
+                    {% if card.description != blank %}
+                      <p>{{ card.description.value | escape | newline_to_br }}</p>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+<script src="{{ 'product-info-tabs.js' | asset_url }}" defer></script>
+<style>
+  #shopify-section-{{ section.id }} {
+    background: var(--{{- section.settings.bgcolor -}}ColorBody);
+    padding-top: {{ section.settings.top_space_desktop }}px;
+    padding-bottom: {{ section.settings.bottom_space_desktop }}px;
+    {%- unless section.settings.bgcolor == 'primary' or section.settings.bgcolor == 'gradient' -%}
+    --colorTextBody: var(--{{- section.settings.bgcolor -}}colorTextBody);
+    {%- endunless -%}
+  }
+
+  @media only screen and (max-width: 991px) {
+    #shopify-section-{{ section.id }}.shopify-section {
+      padding-top: {{ section.settings.top_space_mobile }}px;
+      padding-bottom: {{ section.settings.bottom_space_mobile }}px;
+    }
+  }
+  {% if section.settings.section_visibility == 'large' %}
+    @media (max-width: 767px) {
+      #shopify-section-{{ section.id }} {
+        display: none !important;
+      }
+    }
+  {% elsif section.settings.section_visibility == 'small' %}
+    @media (min-width: 768px) {
+      #shopify-section-{{ section.id }} {
+        display: none !important;
+      }
+    }
+  {% endif %}
+</style>
+{% endif %}
+{% schema %}
+{
+  "name": "Product Info Tabs",
+  "class": "pit-section-wrapper",
+  "enabled_on": {
+    "templates": ["product"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Tab labels"
+    },
+    {
+      "type": "text",
+      "id": "tab_label_designed_for",
+      "label": "Designed for tab label",
+      "default": "Designed For",
+      "info": "Content comes from the product metafield custom.designed_for. The tab is hidden when it is empty."
+    },
+    {
+      "type": "text",
+      "id": "tab_label_description",
+      "label": "Description tab label",
+      "default": "Description"
+    },
+    {
+      "type": "text",
+      "id": "tab_label_features",
+      "label": "Features tab label",
+      "default": "Features",
+      "info": "Content comes from the product metafield custom.features. The tab is hidden when it is empty."
+    },
+    {
+      "type": "header",
+      "content": "Description content"
+    },
+    {
+      "type": "richtext",
+      "id": "description_content",
+      "label": "Description",
+      "default": "<p>Add your product description, size &amp; fit, and materials &amp; care details here.</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_size_guide_prompt",
+      "label": "Show size guide prompt",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "size_guide_text",
+      "label": "Prompt text",
+      "default": "Not sure what size to choose? Check out our"
+    },
+    {
+      "type": "text",
+      "id": "size_guide_link_label",
+      "label": "Link label",
+      "default": "Size Guide"
+    },
+    {
+      "type": "url",
+      "id": "size_guide_url",
+      "label": "Size guide link",
+      "info": "Leave empty to open the size guide drawer from the Variant picker block."
+    },
+    {
+      "type": "header",
+      "content": "Color"
+    },
+    {
+      "type": "select",
+      "id": "bgcolor",
+      "label": "Background",
+      "default": "primary",
+      "options": [
+        { "value": "primary", "label": "Primary" },
+        { "value": "secondary", "label": "Secondary" },
+        { "value": "tertiary", "label": "Tertiary" },
+        { "value": "quaternary", "label": "Quaternary" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "section_visibility",
+      "label": "Section visibility",
+      "default": "always",
+      "options": [
+        { "value": "always", "label": "Always" },
+        { "value": "small", "label": "Small devices only" },
+        { "value": "large", "label": "Large devices only" }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "top_space_desktop",
+      "label": "Top space desktop",
+      "default": 60,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "bottom_space_desktop",
+      "label": "Bottom space desktop",
+      "default": 60,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "top_space_mobile",
+      "label": "Top space mobile",
+      "default": 30,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "bottom_space_mobile",
+      "label": "Bottom space mobile",
+      "default": 30,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Info Tabs"
+    }
+  ]
+}
+{% endschema %}
